@@ -1,6 +1,14 @@
-local options = {
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
+-- OR setup with some options
+require("nvim-tree").setup({
   filters = {
-    dotfiles = false,
+    dotfiles = true,
     exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
   },
   disable_netrw = true,
@@ -19,8 +27,7 @@ local options = {
     preserve_window_proportions = true,
   },
   git = {
-    enable = false,
-    ignore = true,
+    enable = true,
   },
   filesystem_watchers = {
     enable = true,
@@ -32,7 +39,7 @@ local options = {
   },
   renderer = {
     root_folder_label = false,
-    highlight_git = false,
+    highlight_git = true,
     highlight_opened_files = "none",
 
     indent_markers = {
@@ -44,7 +51,7 @@ local options = {
         file = true,
         folder = true,
         folder_arrow = true,
-        git = false,
+        git = true,
       },
 
       glyphs = {
@@ -72,6 +79,7 @@ local options = {
       },
     },
   },
-}
 
-return options
+})
+
+
