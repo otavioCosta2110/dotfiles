@@ -1,0 +1,15 @@
+# Colors (Everforest Dark)
+import = [
+  "~/.config/alacritty/gruvbox.toml",
+]
+[mouse]
+hide_when_typing = true
+# Default colors
+[font]
+normal = { family = "Hack", style = "Regular" }
+
+
+[env]
+# TERM = "xterm-256color"
+
+
