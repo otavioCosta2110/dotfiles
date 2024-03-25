@@ -20,6 +20,9 @@ require("nvim-tree").setup({
     enable = true,
     update_root = false,
   },
+  diagnostics = {
+    enable = true,
+  },
   view = {
     adaptive_size = false,
     side = "left",

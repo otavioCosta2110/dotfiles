@@ -90,11 +90,6 @@ _G.packer_plugins = {
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
     url = "https://github.com/m4xshen/autoclose.nvim"
   },
-  catppuccin = {
-    loaded = true,
-    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
-  },
   ["cheatsheet.nvim"] = {
     loaded = true,
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/cheatsheet.nvim",
@@ -125,10 +120,10 @@ _G.packer_plugins = {
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
-  ["hologram.nvim"] = {
+  ["harpoon-lualine"] = {
     loaded = true,
-    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/hologram.nvim",
-    url = "https://github.com/edluffy/hologram.nvim"
+    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/harpoon-lualine",
+    url = "https://github.com/letieu/harpoon-lualine"
   },
   ["lightline.vim"] = {
     loaded = true,
@@ -200,11 +195,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  playground = {
-    loaded = true,
-    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/playground",
-    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,

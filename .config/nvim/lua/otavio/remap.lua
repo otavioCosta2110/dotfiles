@@ -15,7 +15,7 @@ vks("n", "<C-k>", "<C-w>k")
 vks("n", "<C-j>", "<C-w>j")
 
 --select all
-vks("n", "<C-a>", "gg<S-v>G")
+vks("n", "<C-S-a>", "gg<S-v>G")
 -- save file
 vks("n", "<C-s>", ":w<cr>")
 
@@ -23,9 +23,24 @@ vks("n", "<C-s>", ":w<cr>")
 vks("n", "<leader>n", vim.cmd.enew)
 vks("n", "<leader>v", vim.cmd.vsp)
 
-local function get_buffer_name()
-  return vim.api.nvim_buf_get_name(0)
-end
+
+local harpoon = require("harpoon")
+harpoon:setup({})
+
+-- Harpoon
+vks("n", "<tab>", function() harpoon:list():next() end);
+vks("n", "<S-tab>", function() harpoon:list():prev() end);
+vks("n", "<leader>a", function() harpoon:list():append() end)
+vks("n", "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vks("n", "<A-1>", function() harpoon:list():select(1) end);
+vks("n", "<A-2>", function() harpoon:list():select(2)end)
+vks("n", "<A-3>", function() harpoon:list():select(3)end)
+vks("n", "<A-4>", function() harpoon:list():select(4)end)
+vks("n", "<A-5>", function() harpoon:list():select(5)end)
+vks("n", "<A-6>", function() harpoon:list():select(6)end)
+vks("n", "<A-7>", function() harpoon:list():select(7)end)
+vks("n", "<A-8>", function() harpoon:list():select(8)end)
+vks("n", "<A-9>", function() harpoon:list():select(9)end)
 
 -- nvim tree
 -- vks("n", "<C-e>", vim.cmd.NvimTreeToggle);
@@ -39,24 +54,8 @@ vks("n", "<leader>b", telescope.buffers, {})
 vks("n", "<leader>fp",":lua require'telescope'.extensions.project.project{}<CR>", {})
 vks("n", "<leader>fh", telescope.help_tags, {})
 vks("n", "<C-c>", "<cmd>noh<CR>")
+vks("i", "<C-c>", "<Esc>")
 vks("n", "<Esc>", "<cmd>noh<CR>")
-
--- Bufferline
-vks("n", "<tab>", '<cmd>lua require("harpoon.ui").nav_next()  <CR>');
-vks("n", "<S-tab>", '<cmd>lua require("harpoon.ui").nav_prev()<CR>');
-
--- Harpoon
-vks ("n", "<leader>a", '<cmd>lua require("harpoon.mark").add_file()<CR>')
-vks ("n", "<leader>m", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>')
-vks ("n", "<leader>1", '<cmd>lua require("harpoon.ui").nav_file(1) <CR>')
-vks ("n", "<leader>2", '<cmd>lua require("harpoon.ui").nav_file(2) <CR>')
-vks ("n", "<leader>3", '<cmd>lua require("harpoon.ui").nav_file(3) <CR>')
-vks ("n", "<leader>4", '<cmd>lua require("harpoon.ui").nav_file(4) <CR>')
-vks ("n", "<leader>5", '<cmd>lua require("harpoon.ui").nav_file(5) <CR>')
-vks ("n", "<leader>6", '<cmd>lua require("harpoon.ui").nav_file(6) <CR>')
-vks ("n", "<leader>7", '<cmd>lua require("harpoon.ui").nav_file(7) <CR>')
-vks ("n", "<leader>8", '<cmd>lua require("harpoon.ui").nav_file(8) <CR>')
-vks ("n", "<leader>9", '<cmd>lua require("harpoon.ui").nav_file(9) <CR>')
 
 -- NvTerm
 vks("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true) )

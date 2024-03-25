@@ -1,7 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
 	use {
@@ -10,13 +9,11 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-	use('nvim-treesitter/playground')
 	use 'mbbill/undotree'
 	use('tpope/vim-fugitive')
 	use('nvim-tree/nvim-tree.lua')
 	use('nvim-tree/nvim-web-devicons')
  	use{'NvChad/nvterm',config = function () require("nvterm").setup() end,}
-	-- use{"neovim/nvim-lspconfig"}
 	use{"LuaLS/lua-language-server"}
 	use{"typescript-language-server/typescript-language-server"}
 	use "nvim-lua/plenary.nvim"
@@ -26,22 +23,21 @@ return require('packer').startup(function(use)
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
 		requires = {
-			--- Uncomment the two plugins below if you want to manage the language servers from neovim
 			{'williamboman/mason.nvim'},
 			{'williamboman/mason-lspconfig.nvim'},
 
-			-- LSP Support
 			{'neovim/nvim-lspconfig'},
-			-- Autocompletion
 			{'hrsh7th/nvim-cmp'},
 			{'hrsh7th/cmp-nvim-lsp'},
 			{'L3MON4D3/LuaSnip'},
 		}
 	}
-	use { "catppuccin/nvim", as = "catppuccin" }
-    -- use "tmsvg/pear-tree"
     use "m4xshen/autoclose.nvim"
-    use "ThePrimeagen/harpoon"
+    use {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      requires = { {"nvim-lua/plenary.nvim"} }
+    }
     use {
         'numToStr/Comment.nvim',
         config = function()
@@ -57,11 +53,8 @@ return require('packer').startup(function(use)
             {'nvim-lua/plenary.nvim'},
         }
     }
-    -- use {"vim-airline/vim-airline"}
-    -- use "vim-airline/vim-airline-themes"
     use "github/copilot.vim"
     use "lewis6991/gitsigns.nvim"
-    use {'edluffy/hologram.nvim'}
     use "itchyny/lightline.vim"
     use "tpope/vim-surround"
     use "mg979/vim-visual-multi"
@@ -72,5 +65,10 @@ return require('packer').startup(function(use)
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+    use {
+      'letieu/harpoon-lualine',
+      opt = false,
+      requires = {{'ThePrimeagen/harpoon'}}
     }
 end)
