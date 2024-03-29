@@ -21,10 +21,14 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {
+      "filename",
       '%=',
       {
         "harpoon2",
-      }
+          indicators = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+          active_indicators = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]", "[9]" },
+          _separator = " ",
+      },
     },
     lualine_x = {'filetype'},
     lualine_y = {''},
