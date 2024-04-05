@@ -42,6 +42,11 @@ vks("n", "<A-7>", function() harpoon:list():select(7)end)
 vks("n", "<A-8>", function() harpoon:list():select(8)end)
 vks("n", "<A-9>", function() harpoon:list():select(9)end)
 
+vks("n", "<A-u>", function() harpoon:list():select(1) end);
+vks("n", "<A-i>", function() harpoon:list():select(2)end)
+vks("n", "<A-o>", function() harpoon:list():select(3)end)
+vks("n", "<A-p>", function() harpoon:list():select(4)end)
+
 -- nvim tree
 -- vks("n", "<C-e>", vim.cmd.NvimTreeToggle);
 vks("n", "<leader>e", vim.cmd.NvimTreeToggle);
@@ -55,6 +60,7 @@ vks("n", "<leader>fp",":lua require'telescope'.extensions.project.project{}<CR>"
 vks("n", "<leader>fh", telescope.help_tags, {})
 vks("n", "<C-c>", "<cmd>noh<CR>")
 vks("i", "<C-c>", "<Esc>")
+vks("n", "<C-c>", "<Esc>")
 vks("n", "<Esc>", "<cmd>noh<CR>")
 
 -- NvTerm

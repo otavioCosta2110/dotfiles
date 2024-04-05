@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.5',
 
-		requires = { {'nvim-lua/plenary.nvim'} }
+	 requires = { {'nvim-lua/plenary.nvim'} }
 	}
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use 'mbbill/undotree'
@@ -43,15 +43,6 @@ return require('packer').startup(function(use)
         config = function()
             require('Comment').setup()
         end
-    }
-    use {
-        'sudormrfbin/cheatsheet.nvim',
-
-        requires = {
-            {'nvim-telescope/telescope.nvim'},
-            {'nvim-lua/popup.nvim'},
-            {'nvim-lua/plenary.nvim'},
-        }
     }
     use "github/copilot.vim"
     use "lewis6991/gitsigns.nvim"
