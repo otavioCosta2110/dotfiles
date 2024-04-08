@@ -792,7 +792,7 @@ bar {
 
 	# status_command i3status
     # status_command i3status -c ~/.config/i3/i3status.conf | i3status-title-on-bar --color '#FFFFFF'
-    status_command i3status -c ~/.config/i3/i3status.conf | i3status-title-on-bar --color '$yellow' 
+    status_command i3status -c ~/.config/i3/i3status.conf 
     # OPTION 2 : i3blocks
 
     # https://github.com/vivien/i3blocks

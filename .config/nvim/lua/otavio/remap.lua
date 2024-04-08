@@ -1,5 +1,4 @@
 local telescope = require('telescope.builtin')
-local telescopeProj = require'telescope'.load_extension('project')
 vim.g.mapleader = " "
 local vks = vim.keymap.set
 -- general 
@@ -28,8 +27,8 @@ local harpoon = require("harpoon")
 harpoon:setup({})
 
 -- Harpoon
-vks("n", "<tab>", function() harpoon:list():next() end);
-vks("n", "<S-tab>", function() harpoon:list():prev() end);
+vks("n", "<tab>", function() harpoon:list():next({ ui_nav_wrap = true }) end);
+vks("n", "<S-tab>", function() harpoon:list():prev({ ui_nav_wrap = true }) end);
 vks("n", "<leader>a", function() harpoon:list():append() end)
 vks("n", "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 vks("n", "<A-1>", function() harpoon:list():select(1) end);
