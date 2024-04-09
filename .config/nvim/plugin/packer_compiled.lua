@@ -221,6 +221,16 @@ _G.packer_plugins = {
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
   },
+  ["vim-obsession"] = {
+    loaded = true,
+    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/vim-obsession",
+    url = "https://github.com/tpope/vim-obsession"
+  },
+  ["vim-prosession"] = {
+    loaded = true,
+    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/vim-prosession",
+    url = "https://github.com/dhruvasagar/vim-prosession"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/vim-surround",

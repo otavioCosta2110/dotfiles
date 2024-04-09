@@ -23,29 +23,6 @@ vks("n", "<leader>n", vim.cmd.enew)
 vks("n", "<leader>v", vim.cmd.vsp)
 
 
-local harpoon = require("harpoon")
-harpoon:setup({})
-
--- Harpoon
-vks("n", "<tab>", function() harpoon:list():next({ ui_nav_wrap = true }) end);
-vks("n", "<S-tab>", function() harpoon:list():prev({ ui_nav_wrap = true }) end);
-vks("n", "<leader>a", function() harpoon:list():add() end)
-vks("n", "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-vks("n", "<A-1>", function() harpoon:list():select(1) end);
-vks("n", "<A-2>", function() harpoon:list():select(2)end)
-vks("n", "<A-3>", function() harpoon:list():select(3)end)
-vks("n", "<A-4>", function() harpoon:list():select(4)end)
-vks("n", "<A-5>", function() harpoon:list():select(5)end)
-vks("n", "<A-6>", function() harpoon:list():select(6)end)
-vks("n", "<A-7>", function() harpoon:list():select(7)end)
-vks("n", "<A-8>", function() harpoon:list():select(8)end)
-vks("n", "<A-9>", function() harpoon:list():select(9)end)
-
-vks("n", "<A-u>", function() harpoon:list():select(1) end);
-vks("n", "<A-i>", function() harpoon:list():select(2)end)
-vks("n", "<A-o>", function() harpoon:list():select(3)end)
-vks("n", "<A-p>", function() harpoon:list():select(4)end)
-
 -- nvim tree
 vks("n", "<leader>e", vim.cmd.NvimTreeToggle);
 
@@ -60,7 +37,8 @@ vks("i", "<C-c>", "<Esc>")
 vks("n", "<C-c>", "<Esc>")
 vks("n", "<Esc>", "<cmd>noh<CR>")
 
-vks("n", "<leader>fp",":lua require'telescope'.extensions.project.project{}<CR>", {})
+require('telescope').load_extension('prosession')
+vks("n", "<leader>fp","<cmd>Telescope prosession<CR>", {})
 
 -- NvTerm
 vks("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true) )

@@ -50,6 +50,10 @@ return require('packer').startup(function(use)
     use "mg979/vim-visual-multi"
     use "airblade/vim-gitgutter"
     use "nvim-telescope/telescope-project.nvim"
+    use {
+      "dhruvasagar/vim-prosession",
+          requires = { "tpope/vim-obsession" }
+        }
     use { "ellisonleao/gruvbox.nvim" }
     use "norcalli/nvim-colorizer.lua"
     use {
