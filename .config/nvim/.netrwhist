@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/otavio/Documents/dev/CasaVelhaCompleto/Front-CasaVelha/src'
+let g:netrw_dirhist_2='/home/otavio/Documents/dev/CasaVelhaCompleto/Front-CasaVelha/src/Screens'
+let g:netrw_dirhist_3='/home/otavio/Documents/dev/CasaVelhaCompleto/Front-CasaVelha/src/Screens/home'
+let g:netrw_dirhist_4='/home/otavio/dotfiles/.config/nvim'
+let g:netrw_dirhist_5='/home/otavio/dotfiles/.config/nvim/after'
+let g:netrw_dirhist_6='/home/otavio/dotfiles/.config/nvim/lua'
+let g:netrw_dirhist_7='/home/otavio/dotfiles/.config/nvim/lua/otavio'

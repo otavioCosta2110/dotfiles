@@ -29,7 +29,7 @@ harpoon:setup({})
 -- Harpoon
 vks("n", "<tab>", function() harpoon:list():next({ ui_nav_wrap = true }) end);
 vks("n", "<S-tab>", function() harpoon:list():prev({ ui_nav_wrap = true }) end);
-vks("n", "<leader>a", function() harpoon:list():append() end)
+vks("n", "<leader>a", function() harpoon:list():add() end)
 vks("n", "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 vks("n", "<A-1>", function() harpoon:list():select(1) end);
 vks("n", "<A-2>", function() harpoon:list():select(2)end)
@@ -47,7 +47,6 @@ vks("n", "<A-o>", function() harpoon:list():select(3)end)
 vks("n", "<A-p>", function() harpoon:list():select(4)end)
 
 -- nvim tree
--- vks("n", "<C-e>", vim.cmd.NvimTreeToggle);
 vks("n", "<leader>e", vim.cmd.NvimTreeToggle);
 
 -- Telescope
@@ -55,12 +54,13 @@ vks("n", "<leader>ff", telescope.find_files, {})
 vks("n", "<leader>fw", telescope.live_grep, {})
 vks("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
 vks("n", "<leader>b", telescope.buffers, {})
-vks("n", "<leader>fp",":lua require'telescope'.extensions.project.project{}<CR>", {})
 vks("n", "<leader>fh", telescope.help_tags, {})
 vks("n", "<C-c>", "<cmd>noh<CR>")
 vks("i", "<C-c>", "<Esc>")
 vks("n", "<C-c>", "<Esc>")
 vks("n", "<Esc>", "<cmd>noh<CR>")
+
+vks("n", "<leader>fp",":lua require'telescope'.extensions.project.project{}<CR>", {})
 
 -- NvTerm
 vks("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true) )
@@ -80,14 +80,11 @@ vks("n", "<leader>t", "<cmd>term <CR>")
 
 -- visual change lines
 vks("v", "J", ":m '>+1<CR>gv=gv")
-vks("v", "K", ":m '>-2<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- copy to sys clipboard
 vks("n", "<leader>y", "\"+y")
 vks("v", "<leader>y", "\"+y")
-
--- %s
-vks("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- make buffer executable
 vks("n", "<leader>X", "<cmd>!chmod +x %<CR>", {silent = true})

@@ -46,12 +46,11 @@ return require('packer').startup(function(use)
     }
     use "github/copilot.vim"
     use "lewis6991/gitsigns.nvim"
-    use "itchyny/lightline.vim"
     use "tpope/vim-surround"
     use "mg979/vim-visual-multi"
     use "airblade/vim-gitgutter"
     use "nvim-telescope/telescope-project.nvim"
-    use "morhetz/gruvbox"
+    use { "ellisonleao/gruvbox.nvim" }
     use "norcalli/nvim-colorizer.lua"
     use {
       'nvim-lualine/lualine.nvim',
