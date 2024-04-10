@@ -5,4 +5,3 @@ telescope.setup{
     initial_mode = "normal",
   }
 }
-

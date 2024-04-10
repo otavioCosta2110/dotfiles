@@ -21,6 +21,7 @@ vks("n", "<C-s>", ":w<cr>")
 -- buffers
 vks("n", "<leader>n", vim.cmd.enew)
 vks("n", "<leader>v", vim.cmd.vsp)
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 
 -- nvim tree
@@ -37,8 +38,8 @@ vks("i", "<C-c>", "<Esc>")
 vks("n", "<C-c>", "<Esc>")
 vks("n", "<Esc>", "<cmd>noh<CR>")
 
-require('telescope').load_extension('prosession')
-vks("n", "<leader>fp","<cmd>Telescope prosession<CR>", {})
+require('telescope').load_extension('possession')
+vks("n", "<leader>fp","<cmd>Telescope possession list<CR>", {})
 
 -- NvTerm
 vks("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true) )
