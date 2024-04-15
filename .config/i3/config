@@ -223,7 +223,6 @@ assign [class="Spotube"] $ws8
 for_window [class="brave"] focus
 
 # assign only nvim to workspace $ws2
-exec --no-startup-id i3-msg workspace $ws7 && discord
 exec --no-startup-id i3-msg workspace $ws1 && exo-open --launch webbrowser;focus
 exec --no-startup-id i3-msg workspace $ws3 && pinta
 exec --no-startup-id i3-msg workspace 2 && alacritty --title nvim -e nvim
