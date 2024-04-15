@@ -64,9 +64,13 @@ set $ws4 4
 set $ws5 5
 set $ws6 6
 set $ws7 7
-set $ws8 "♫Music"
+set $ws8 "♫ Music"
+set $ws9 "  SysMon"
+set $ws10 "💬 Discord"
 
-workspace ♫Music output $secondMonitor
+workspace "♫ Music" output $secondMonitor
+workspace "  SysMon" output $secondMonitor
+workspace "💬 Discord" output $secondMonitor
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1; workspace 1
@@ -107,7 +111,6 @@ mode "$mode_system" {
 }
 
 # ArcoLinux Logout
-bindsym $mod+Shift+e exec --no-startup-id archlinux-logout
 bindsym $mod+X exec --no-startup-id archlinux-logout
 bindsym $mod+Shift+X exec --no-startup-id arcolinux-powermenu
 bindsym $mod2+D exec discord
@@ -191,7 +194,7 @@ bindsym $mod+f fullscreen toggle
 # qwerty/azerty issue for letter z
 bindsym $mod+s layout stacking
 bindsym $mod+z layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+shift+e layout toggle split
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -210,15 +213,16 @@ bindsym $mod+Mod1+Ctrl+Up resize grow height 1 px or 1 ppt
 bindsym $mod+Mod1+Ctrl+Down resize shrink height 1 px or 1 ppt
 bindsym $mod+Mod1+Ctrl+Left resize grow width 1 px or 1 ppt
 
-font pango:Noto Mono Regular 13
+font pango:Hack Regular 13
 
 ################# assign applications to workspaces 
 
 assign [class="Brave"] $ws1
 assign [title="nvim"] $ws2
 assign [class="pinta"] $ws3
-assign [class="discord"] $ws7
 assign [class="Spotube"] $ws8
+assign [title="bpytop"] $ws9
+assign [class="discord"] $ws10
 
 for_window [class="brave"] focus
 
@@ -227,6 +231,7 @@ exec --no-startup-id i3-msg workspace $ws1 && exo-open --launch webbrowser;focus
 exec --no-startup-id i3-msg workspace $ws3 && pinta
 exec --no-startup-id i3-msg workspace 2 && alacritty --title nvim -e nvim
 exec --no-startup-id i3-msg workspace $ws8 && spotube
+exec --no-startup-id alacritty --title bpytop -e bpytop
 
 for_window [class="brave"] focus
 
@@ -296,6 +301,7 @@ bindsym control+mod1+i exec --no-startup-id nitrogen;focus
 bindsym $mod+F2 exec Thunar
 bindsym $mod+Shift+t exec Thunar
 bindsym $mod+F3 exec alacritty -e ranger
+bindsym $mod+e exec alacritty -e ranger
 bindsym $mod+F4 exec spotube
 bindsym $mod+Shift+s exec spotube
 bindsym $mod+F5 workspace 2; exec alacritty -e "/home/otavio/Documents/nvimToDev.sh"
@@ -451,7 +457,8 @@ set $gray #a89984
 set $darkgray #1d2021
 bar {
     workspace_buttons yes
-	font pango:Noto Sans 12
+	# font pango:Noto Sans 12
+  font pango:Hack Regular 11
 	# position top
     position bottom
     mode hide
