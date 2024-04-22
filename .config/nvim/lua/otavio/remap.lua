@@ -79,7 +79,7 @@ end);
 vks("v", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>");
 
 --copilot
-vim.keymap.set('i', '<C-y>', 'copilot#Accept("\\<CR>")', {
+vim.keymap.set('i', '<C-i>', 'copilot#Accept("\\<CR>")', {
   expr = true,
   replace_keycodes = false
 })
