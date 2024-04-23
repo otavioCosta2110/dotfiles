@@ -25,8 +25,8 @@ require('lualine').setup {
       '%=',
       {
         "harpoon2",
-          indicators = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-          active_indicators = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]", "[9]" },
+          indicators = { "u", "i", "o", "p", "j", "k", "l", "8", "9" },
+          active_indicators = { "[u]", "[i]", "[o]", "[p]", "[j]", "[k]", "[l]", "[8]", "[9]" },
           _separator = " ",
       },
     },

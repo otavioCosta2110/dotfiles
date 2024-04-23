@@ -65,8 +65,5 @@ return require('packer').startup(function(use)
     opt = false,
     requires = {{'ThePrimeagen/harpoon'}}
   }
-  use {
-    'akinsho/flutter-tools.nvim',
-  }
   use "nvim-treesitter/nvim-treesitter-context"
 end)
