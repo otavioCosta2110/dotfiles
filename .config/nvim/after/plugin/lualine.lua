@@ -1,3 +1,29 @@
+local custom_gruvbox = require('lualine.themes.gruvbox')
+local colors = {
+  black = '#191919',
+  gray = '#303030',
+  white = '#ebdbb2'
+}
+-- c
+custom_gruvbox.normal.c.bg = colors.black
+custom_gruvbox.normal.c.fg = colors.white
+custom_gruvbox.insert.c.bg = colors.black
+custom_gruvbox.insert.c.fg = colors.white
+custom_gruvbox.visual.c.bg = colors.black
+custom_gruvbox.visual.c.fg = colors.white
+custom_gruvbox.command.c.bg = colors.black
+custom_gruvbox.command.c.fg = colors.white
+
+-- b
+custom_gruvbox.normal.b.bg = colors.gray
+custom_gruvbox.normal.b.fg = colors.white
+custom_gruvbox.visual.b.bg = colors.gray
+custom_gruvbox.visual.b.fg = colors.white
+custom_gruvbox.insert.b.bg = colors.gray
+custom_gruvbox.insert.b.fg = colors.white
+custom_gruvbox.command.b.bg = colors.gray
+custom_gruvbox.command.b.fg = colors.white
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
