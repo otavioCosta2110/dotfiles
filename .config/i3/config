@@ -222,7 +222,7 @@ font pango:Hack Regular 13
 
 ################# assign applications to workspaces 
 
-assign [class="Brave"] $ws1
+assign [class="Vivaldi-stable"] $ws1
 assign [title="nvim"] $ws2
 assign [class="obsidian"] $ws3
 assign [class="Spotube"] $ws11
@@ -232,7 +232,7 @@ for_window [class="brave"] focus
 
 # assign only nvim to workspace $ws2
 exec --no-startup-id i3-msg workspace 2 && alacritty --title nvim -e  "/home/otavio/Documents/nvimToDev.sh"
-exec --no-startup-id i3-msg workspace $ws3 && obsidian
+# exec --no-startup-id i3-msg workspace $ws3 && obsidian
 exec --no-startup-id i3-msg workspace $ws1 && exo-open --launch webbrowser;focus
 exec --no-startup-id i3-msg workspace $ws11 && spotube
 
