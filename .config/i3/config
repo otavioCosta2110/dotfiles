@@ -393,7 +393,7 @@ hide_edge_borders both
 bindsym $mod+shift+b exec --no-startup-id i3-msg border toggle
 
 bindsym $mod+t border normal
-bindsym $mod+y border pixel 4
+bindsym $mod+y border pixel 2
 bindsym $mod+u border none
 
 new_window normal
@@ -471,24 +471,24 @@ bar {
 
     status_command i3status -c ~/.config/i3/i3status.conf 
 
-    colors {
-        background $bg
-        statusline $yellow
-        #                    border  backgr. text
-        focused_workspace    $aqua $aqua $yellow
-        inactive_workspace   $darkgray $bg $yellow
-        active_workspace     $darkgray $bg $yellow
-        urgent_workspace     $red $red $bg
-        }
+    # colors {
+    #     background $bg
+    #     statusline $yellow
+    #     #                    border  backgr. text
+    #     focused_workspace    $aqua $aqua $yellow
+    #     inactive_workspace   $darkgray $bg $yellow
+    #     active_workspace     $darkgray $bg $yellow
+    #     urgent_workspace     $red $red $bg
+    #     }
 }
     ##STOP THEMING BAR
 
     ##START THEMING WM
     # class                 border  backgr. text    indicator
-client.focused          $blue $blue $darkgray $blue 
-client.focused_inactive $darkgray $darkgray $yellow $blue 
-client.unfocused        $darkgray $darkgray $yellow $blue 
-client.urgent           $red $red $white $red 
+# client.focused          $blue $blue $darkgray $blue 
+# client.focused_inactive $darkgray $darkgray $yellow $blue 
+# client.unfocused        $darkgray $darkgray $yellow $blue 
+# client.urgent           $red $red $white $red 
 
 ################# unclutter                        
 
