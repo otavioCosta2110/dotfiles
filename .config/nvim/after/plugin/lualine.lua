@@ -1,75 +1,75 @@
-local custom_gruvbox = require('lualine.themes.gruvbox')
-local colors = {
-  black = '#191919',
-  gray = '#303030',
-  white = '#ebdbb2'
-}
--- c
-custom_gruvbox.normal.c.bg = colors.black
-custom_gruvbox.normal.c.fg = colors.white
-custom_gruvbox.insert.c.bg = colors.black
-custom_gruvbox.insert.c.fg = colors.white
-custom_gruvbox.visual.c.bg = colors.black
-custom_gruvbox.visual.c.fg = colors.white
-custom_gruvbox.command.c.bg = colors.black
-custom_gruvbox.command.c.fg = colors.white
-
--- b
-custom_gruvbox.normal.b.bg = colors.gray
-custom_gruvbox.normal.b.fg = colors.white
-custom_gruvbox.visual.b.bg = colors.gray
-custom_gruvbox.visual.b.fg = colors.white
-custom_gruvbox.insert.b.bg = colors.gray
-custom_gruvbox.insert.b.fg = colors.white
-custom_gruvbox.command.b.bg = colors.gray
-custom_gruvbox.command.b.fg = colors.white
-
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'auto',
-  section_separators = { left = '', right = '' },
-  component_separators = { left = '', right = '' },
-    disabled_filetypes = {
-      statusline = {},
-      winbar = {},
-    },
-    ignore_focus = {},
-    always_divide_middle = true,
-    globalstatus = false,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
-    }
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {
-      "filename",
-      '%=',
-      {
-        "harpoon2",
-          indicators = { "u", "i", "o", "p", "j", "k", "l", "8", "9" },
-          active_indicators = { "[u]", "[i]", "[o]", "[p]", "[j]", "[k]", "[l]", "[8]", "[9]" },
-          _separator = " ",
-      },
-    },
-    lualine_x = {'filetype'},
-    lualine_y = {''},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  winbar = {},
-  inactive_winbar = {},
-  extensions = {}
-}
+-- local custom_gruvbox = require('lualine.themes.gruvbox')
+-- local colors = {
+--   black = '#191919',
+--   gray = '#303030',
+--   white = '#ebdbb2'
+-- }
+-- -- c
+-- custom_gruvbox.normal.c.bg = colors.black
+-- custom_gruvbox.normal.c.fg = colors.white
+-- custom_gruvbox.insert.c.bg = colors.black
+-- custom_gruvbox.insert.c.fg = colors.white
+-- custom_gruvbox.visual.c.bg = colors.black
+-- custom_gruvbox.visual.c.fg = colors.white
+-- custom_gruvbox.command.c.bg = colors.black
+-- custom_gruvbox.command.c.fg = colors.white
+--
+-- -- b
+-- custom_gruvbox.normal.b.bg = colors.gray
+-- custom_gruvbox.normal.b.fg = colors.white
+-- custom_gruvbox.visual.b.bg = colors.gray
+-- custom_gruvbox.visual.b.fg = colors.white
+-- custom_gruvbox.insert.b.bg = colors.gray
+-- custom_gruvbox.insert.b.fg = colors.white
+-- custom_gruvbox.command.b.bg = colors.gray
+-- custom_gruvbox.command.b.fg = colors.white
+--
+-- require('lualine').setup {
+--   options = {
+--     icons_enabled = true,
+--     theme = 'auto',
+--   section_separators = { left = '', right = '' },
+--   component_separators = { left = '', right = '' },
+--     disabled_filetypes = {
+--       statusline = {},
+--       winbar = {},
+--     },
+--     ignore_focus = {},
+--     always_divide_middle = true,
+--     globalstatus = false,
+--     refresh = {
+--       statusline = 1000,
+--       tabline = 1000,
+--       winbar = 1000,
+--     }
+--   },
+--   sections = {
+--     lualine_a = {'mode'},
+--     lualine_b = {'branch', 'diff', 'diagnostics'},
+--     lualine_c = {
+--       "filename",
+--       '%=',
+--       {
+--         "harpoon2",
+--           indicators = { "u", "i", "o", "p", "j", "k", "l", "8", "9" },
+--           active_indicators = { "[u]", "[i]", "[o]", "[p]", "[j]", "[k]", "[l]", "[8]", "[9]" },
+--           _separator = " ",
+--       },
+--     },
+--     lualine_x = {'filetype'},
+--     lualine_y = {''},
+--     lualine_z = {'location'}
+--   },
+--   inactive_sections = {
+--     lualine_a = {},
+--     lualine_b = {},
+--     lualine_c = {'filename'},
+--     lualine_x = {'location'},
+--     lualine_y = {},
+--     lualine_z = {}
+--   },
+--   tabline = {},
+--   winbar = {},
+--   inactive_winbar = {},
+--   extensions = {}
+-- }

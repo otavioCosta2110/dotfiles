@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/otavio/.cache/nvim/packer_hererocks/2.1.1713773202/share/lua/5.1/?.lua;/home/otavio/.cache/nvim/packer_hererocks/2.1.1713773202/share/lua/5.1/?/init.lua;/home/otavio/.cache/nvim/packer_hererocks/2.1.1713773202/lib/luarocks/rocks-5.1/?.lua;/home/otavio/.cache/nvim/packer_hererocks/2.1.1713773202/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/otavio/.cache/nvim/packer_hererocks/2.1.1713773202/lib/lua/5.1/?.so"
+local package_path_str = "/home/otavio/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?.lua;/home/otavio/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?/init.lua;/home/otavio/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?.lua;/home/otavio/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/otavio/.cache/nvim/packer_hererocks/2.1.1720049189/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -90,6 +90,11 @@ _G.packer_plugins = {
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
     url = "https://github.com/m4xshen/autoclose.nvim"
   },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -115,11 +120,6 @@ _G.packer_plugins = {
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
-  ["harpoon-lualine"] = {
-    loaded = true,
-    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/harpoon-lualine",
-    url = "https://github.com/letieu/harpoon-lualine"
-  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -129,11 +129,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/lua-language-server",
     url = "https://github.com/LuaLS/lua-language-server"
-  },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -160,20 +155,15 @@ _G.packer_plugins = {
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-tree.lua"] = {
-    loaded = true,
-    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/nvim-tree/nvim-tree.lua"
-  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["nvim-treesitter-context"] = {
+  ["nvim-ts-autotag"] = {
     loaded = true,
-    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
+    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -186,6 +176,11 @@ _G.packer_plugins = {
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/nvterm",
     url = "https://github.com/NvChad/nvterm"
   },
+  ["oil.nvim"] = {
+    loaded = true,
+    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/oil.nvim",
+    url = "https://github.com/stevearc/oil.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -195,11 +190,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
-  },
-  ["telescope-project.nvim"] = {
-    loaded = true,
-    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/telescope-project.nvim",
-    url = "https://github.com/nvim-telescope/telescope-project.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -225,16 +215,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/otavio/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
-  },
-  ["vim-obsession"] = {
-    loaded = true,
-    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/vim-obsession",
-    url = "https://github.com/tpope/vim-obsession"
-  },
-  ["vim-prosession"] = {
-    loaded = true,
-    path = "/home/otavio/.local/share/nvim/site/pack/packer/start/vim-prosession",
-    url = "https://github.com/dhruvasagar/vim-prosession"
   },
   ["vim-surround"] = {
     loaded = true,

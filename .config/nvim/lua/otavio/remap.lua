@@ -25,6 +25,7 @@ vks("n", "<leader>v", vim.cmd.vsp)
 
 -- nvim tree
 vks("n", "<leader>e", vim.cmd.NvimTreeToggle);
+vks("n", "<leader>e", vim.cmd.Oil);
 
 -- Telescope
 vks("n", "<leader>ff", telescope.find_files, {})
@@ -36,9 +37,6 @@ vks("n", "<C-c>", "<cmd>noh<CR>")
 vks("i", "<C-c>", "<Esc>")
 vks("n", "<C-c>", "<Esc>")
 vks("n", "<Esc>", "<cmd>noh<CR>")
-
-require('telescope').load_extension('prosession')
-vks("n", "<leader>fp","<cmd>Telescope prosession<CR>", {})
 
 -- NvTerm
 vks("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true) )

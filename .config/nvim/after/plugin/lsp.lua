@@ -17,10 +17,10 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 cmp.setup({
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
+  -- window = {
+  --   completion = cmp.config.window.bordered(),
+  --   documentation = cmp.config.window.bordered(),
+  -- },
   mapping = cmp.mapping.preset.insert({
     ['<Tab>'] = cmp.mapping.abort(),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
@@ -29,4 +29,3 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
   })
 })
-

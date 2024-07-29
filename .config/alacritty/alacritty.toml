@@ -2,8 +2,11 @@
 import = [
   "~/.config/alacritty/gruvbox.toml",
 ]
+
 [mouse]
 hide_when_typing = true
-
 [font]
-normal = { family = "Hack", style = "Regular" }
+normal = { family = "CaskaydiaMonoNerdFont", style = "Regular" }
+# normal = { family = "HackNerdFont", style = "Regular" }
+size = 11
+

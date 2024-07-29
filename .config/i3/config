@@ -30,10 +30,13 @@ set $right l
 ################# Single and Dual screen
 
 # current displays
-exec --no-startup-id xrandr --output DP0 --right-of HDMI-0 --auto
+exec --no-startup-id xrandr --output VGA-1 --left-of eDP-1 --auto
 
-set $firstMonitor HDMI-1
-set $secondMonitor VGA-1
+# set $firstMonitor eDP-1
+# set $secondMonitor VGA-1
+set $firstMonitor VGA-1
+# set $firstMonitor HDMI-3
+set $secondMonitor eDP-1
 
 
 set $ws1 1
@@ -94,7 +97,7 @@ bindsym $mod+Shift+plus move container to workspace $ws12; workspace $ws12
 # start dmenu
 bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
 
-bindsym $mod+d exec --no-startup-id ~/.config/i3/launcher/launcher.sh
+bindsym $mod+d exec --no-startup-id rofi -no-config -no-lazy-grab -show drun -modi drun
 
 ################# how to exit, logoff, suspend, ...
 
@@ -222,22 +225,17 @@ font pango:Hack Regular 13
 
 ################# assign applications to workspaces 
 
-assign [class="Vivaldi-stable"] $ws1
-assign [title="nvim"] $ws2
-assign [class="obsidian"] $ws3
-assign [class="Spotube"] $ws11
+assign [class="Vivaldi"] $ws1
+# assign [title="nvim"] $ws2
+# assign [class="obsidian"] $ws3
+# assign [class="Spotube"] $ws11
 assign [class="discord"] $ws10
 
-for_window [class="brave"] focus
-
 # assign only nvim to workspace $ws2
-exec --no-startup-id i3-msg workspace 2 && alacritty --title nvim -e  "/home/otavio/Documents/nvimToDev.sh"
+# exec --no-startup-id i3-msg workspace 2 && alacritty --title nvim -e  "/home/otavio/Documents/nvimToDev.sh"
 # exec --no-startup-id i3-msg workspace $ws3 && obsidian
-exec --no-startup-id i3-msg workspace $ws1 && exo-open --launch webbrowser;focus
-exec --no-startup-id i3-msg workspace $ws11 && spotube
-
-for_window [class="brave"] focus
-
+exec --no-startup-id i3-msg workspace $ws2 && exo-open --launch webbrowser;focus
+# exec --no-startup-id i3-msg workspace $ws11 && spotube
 
 # Autotiling
 exec_always --no-startup-id autotiling
@@ -253,8 +251,7 @@ exec --no-startup-id nm-applet
 # num lock activated
 exec_always --no-startup-id numlockx on
 
-exec --no-startup-id /home/otavio/Documents/nitrogen.sh
-
+exec --no-startup-id /home/otavio/.local/scripts/nitrogen.sh
 ################# system applications       
 
 exec --no-startup-id xfce4-power-manager &
@@ -269,7 +266,8 @@ bindsym $mod+Return exec --no-startup-id alacritty;focus
 bindsym $mod+KP_Enter exec --no-startup-id alacritty;focus
 bindsym control+mod1+t exec --no-startup-id alacritty; focus
 bindsym control+mod1+Return exec --no-startup-id alacritty; focus
-bindsym $mod+Shift+Return exec --no-startup-id alacritty -e $SHELL -c "cd ~/Documents/dev && exec $SHELL"; focus
+# bindsym $mod+Shift+Return exec --no-startup-id alacritty -e $SHELL -c "cd ~/dev && exec $SHELL"; focus
+bindsym $mod+Shift+Return exec --no-startup-id alacritty -e $SHELL -c "cd ~/dev && exec $SHELL"; focus
 bindsym shift+mod1+Return exec --no-startup-id alacritty; focus
 bindsym control+mod1+KP_Enter exec --no-startup-id alacritty; focus
 
@@ -309,8 +307,8 @@ bindsym $mod+F3 exec alacritty -e ranger
 bindsym $mod+e exec alacritty -e ranger
 bindsym $mod+F4 exec spotube
 bindsym $mod+Shift+s exec spotube
-bindsym $mod+F5 workspace 2; exec alacritty -e "/home/otavio/Documents/nvimToDev.sh"
-bindsym $mod+Shift+V workspace 2; exec alacritty -e "/home/otavio/Documents/nvimToDev.sh"
+bindsym $mod+F5 workspace 2; exec alacritty -e "/home/otavio/.local/scripts/nvimToDev.sh"
+bindsym $mod+Shift+V exec alacritty -e "/home/otavio/.local/scripts/nvimToDev.sh"
 
 for_window [class="Thunar"] focus
 bindsym $mod+F8 exec --no-startup-id thunar;focus
@@ -372,17 +370,17 @@ for_window [class="Urxvt"] focus
 for_window [class="Alacritty"] focus
 
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master '5%+'"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master '5%-'"
-bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D default set Master '5%+'"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D default set Master '5%-'"
+bindsym XF86AudioMute exec --no-startup-id "amixer -D default set Master toggle"
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioStop exec --no-startup-id playerctl stop
 ################# xbacklight                       
 
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 2+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 2-
 
 bindsym Scroll_Lock exec ~/.config/i3/scripts/scroll-toggle.sh
 
@@ -393,7 +391,7 @@ hide_edge_borders both
 bindsym $mod+shift+b exec --no-startup-id i3-msg border toggle
 
 bindsym $mod+t border normal
-bindsym $mod+y border pixel 2
+bindsym $mod+y border pixel 3
 bindsym $mod+u border none
 
 new_window normal
@@ -404,9 +402,9 @@ popup_during_fullscreen smart
 
 ################# i3 gaps next                     
 
-for_window [class="^.*"] border pixel 4
-gaps inner 5
-gaps outer 2
+for_window [class="^.*"] border pixel 3
+gaps inner 2
+gaps outer 0
 smart_gaps on
 smart_borders on
 
@@ -460,14 +458,14 @@ set $aqua #3C3836
 set $gray #a89984
 set $darkgray #1d2021
 bar {
-    workspace_buttons yes
+    # workspace_buttons yes
 	# font pango:Noto Sans 12
-  font pango:Hack Regular 11
+  font pango:Hack Regular 8
 	# position top
     position bottom
-    mode hide
+    # mode hide
 
-    tray_output $firstMonitor
+    tray_output primary
 
     status_command i3status -c ~/.config/i3/i3status.conf 
 
@@ -481,10 +479,10 @@ bar {
     #     urgent_workspace     $red $red $bg
     #     }
 }
-    ##STOP THEMING BAR
-
-    ##START THEMING WM
-    # class                 border  backgr. text    indicator
+#     ##STOP THEMING BAR
+#
+#     ##START THEMING WM
+#     # class                 border  backgr. text    indicator
 # client.focused          $blue $blue $darkgray $blue 
 # client.focused_inactive $darkgray $darkgray $yellow $blue 
 # client.unfocused        $darkgray $darkgray $yellow $blue 
@@ -511,3 +509,4 @@ mode "resize" {
 }
 
 bindsym $mod+p bar mode toggle
+

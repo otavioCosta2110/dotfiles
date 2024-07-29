@@ -11,13 +11,13 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use 'mbbill/undotree'
   use('tpope/vim-fugitive')
-  use('nvim-tree/nvim-tree.lua')
   use('nvim-tree/nvim-web-devicons')
   use{'NvChad/nvterm',config = function () require("nvterm").setup() end,}
   use{"LuaLS/lua-language-server"}
   use{"typescript-language-server/typescript-language-server"}
   use "nvim-lua/plenary.nvim"
   use "hrsh7th/nvim-cmp"
+  use 'hrsh7th/cmp-buffer'
   use "hrsh7th/vim-vsnip"
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -49,21 +49,8 @@ return require('packer').startup(function(use)
   use "tpope/vim-surround"
   use "mg979/vim-visual-multi"
   use "airblade/vim-gitgutter"
-  use "nvim-telescope/telescope-project.nvim"
-  use {
-    "dhruvasagar/vim-prosession",
-    requires = { "tpope/vim-obsession" }
-  }
   use { "ellisonleao/gruvbox.nvim" }
   use "norcalli/nvim-colorizer.lua"
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
-  use {
-    'letieu/harpoon-lualine',
-    opt = false,
-    requires = {{'ThePrimeagen/harpoon'}}
-  }
-  use "nvim-treesitter/nvim-treesitter-context"
+  use "stevearc/oil.nvim"
+  use "windwp/nvim-ts-autotag"
 end)
