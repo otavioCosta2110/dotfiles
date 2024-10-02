@@ -53,4 +53,5 @@ return require('packer').startup(function(use)
   use "norcalli/nvim-colorizer.lua"
   use "stevearc/oil.nvim"
   use "windwp/nvim-ts-autotag"
+  use "daschw/leaf.nvim"
 end)

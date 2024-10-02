@@ -16,6 +16,7 @@ mkdir .config
 cp -r ~/.config/alacritty .config/alacritty
 cp -r ~/.config/i3 .config/i3
 cp -r ~/.config/nvim .config/nvim
-cp -r ~/.local/scripts ./.local/scripts
+mkdir -p .local/scripts
+cp -r ~/.local/scripts/* ./.local/scripts
 cp -r ~/.fonts ./.fonts
 cp ~/.zshrc ./.zshrc

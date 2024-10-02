@@ -349,4 +349,5 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 alias v=nvim
-. /opt/asdf-vm/asdf.sh
+alias python=~/.python-env/bin/python3.12
+alias pip=~/.python-env/bin/pip3
