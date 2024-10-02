@@ -1,6 +1,7 @@
 # Colors (Everforest Dark)
 import = [
-  "~/.config/alacritty/gruvbox.toml",
+  # "~/.config/alacritty/gruvbox.toml",
+  "~/.config/alacritty/leaf.toml",
 ]
 
 [mouse]
@@ -10,3 +11,6 @@ normal = { family = "CaskaydiaMonoNerdFont", style = "Regular" }
 # normal = { family = "HackNerdFont", style = "Regular" }
 size = 11
 
+[window]
+padding = { x = 0, y = 0 }
+opacity = 0.98

@@ -10,11 +10,14 @@ require'colorizer'.setup()
 -- })
 --
 
-require("gruvbox").setup({
-  transparent_mode = true,
+-- require("gruvbox").setup({
+--   transparent_mode = true,
+-- })
+require("leaf").setup({
+  transparent = true,
 })
 
-vim.cmd.colorscheme "gruvbox"
+vim.cmd.colorscheme "leaf"
 vim.cmd("highlight telescopeborder guibg=none")
 vim.cmd("highlight pmenu guibg=#0a0a0a")
 

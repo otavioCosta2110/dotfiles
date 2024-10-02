@@ -19,4 +19,3 @@ vim.opt.termguicolors = true
 
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
-
