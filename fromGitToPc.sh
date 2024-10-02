@@ -10,7 +10,7 @@ rm -r ~/.local/scripts
 rm -r ~/.config/alacritty
 rm -r ~/.config/i3
 rm -r ~/.config/nvim
-rm -r ./.fonts
+rm -r ~/.fonts
 rm ~/.zshrc
 
 cp -r ./.config/alacritty ~/.config/alacritty
