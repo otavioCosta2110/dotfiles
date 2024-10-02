@@ -7,9 +7,13 @@ if [ "$current_dir" != "dotfiles" ]; then
 fi
 
 rm -r ./.config
+rm -r ./.local
+rm ./.zshrc
 
 mkdir .config
 
 cp -r ~/.config/alacritty .config/alacritty
 cp -r ~/.config/i3 .config/i3
 cp -r ~/.config/nvim .config/nvim
+cp -r ~/.local/scripts ./.local/scripts
+cp ~/.zshrc ./.zshrc
