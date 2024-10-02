@@ -8,7 +8,7 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'ts_ls', 'rust_analyzer'},
+  ensure_installed = {'tsserver', 'rust_analyzer'},
   handlers = {
     lsp_zero.default_setup,
   }

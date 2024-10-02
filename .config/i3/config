@@ -99,9 +99,6 @@ bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63
 
 bindsym $mod+d exec --no-startup-id rofi -no-config -no-lazy-grab -show drun -modi drun
 
-# change keyboard layout
-bindsym $mod2+space exec --no-startup-id ~/.local/scripts/changelayout.sh
-
 ################# how to exit, logoff, suspend, ...
 
 # Backup exit
@@ -467,6 +464,8 @@ bar {
 	# position top
     position bottom
     # mode hide
+
+    tray_output primary
 
     status_command i3status -c ~/.config/i3/i3status.conf 
 
