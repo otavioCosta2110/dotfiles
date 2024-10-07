@@ -351,3 +351,5 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 alias v=nvim
 alias python=~/.python-env/bin/python3.12
 alias pip=~/.python-env/bin/pip3
+
+export PATH=$PATH:/home/otavio/.spicetify

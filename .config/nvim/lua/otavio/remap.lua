@@ -65,9 +65,6 @@ vks("v", "<leader>y", "\"+y")
 -- make buffer executable
 vks("n", "<leader>X", "<cmd>!chmod +x %<CR>", {silent = true})
 
--- close current buffer
-vks("n", "<leader>x", "<cmd>:bd %<CR>")
-
 vks("i", "<C-c>", "<Esc>")
 
 --comment

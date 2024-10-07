@@ -1,35 +1,32 @@
 vim.opt.termguicolors = true
-require'colorizer'.setup()
--- require("kanagawa").setup({
---   colors = {
---     palette = {
---       sumiink4 = '#000000'
---     }
---   },
---   transparent = true,
--- })
---
+require("otavio.lazy_init")
+require("otavio.remap")
+require("otavio.set")
 
--- require("gruvbox").setup({
---   transparent_mode = true,
--- })
-require("leaf").setup({
+require("posterpole").setup({
+  colorless_bg = true,
   transparent = true,
+  fg_saturation = 10,
 })
 
-vim.cmd.colorscheme "leaf"
+vim.cmd.colorscheme "posterpole"
+
+vim.cmd("highlight TelescopeBorder guibg=none")
+vim.cmd("highlight TelescopePromptBorder guibg=none")
+vim.cmd("highlight TelescopePreviewBorder guibg=none")
 vim.cmd("highlight telescopeborder guibg=none")
 vim.cmd("highlight pmenu guibg=#0a0a0a")
 
 vim.g.copilot_no_tab_map = true
 
 require("autoclose").setup()
-require("otavio.remap")
-require("otavio.set")
+
 require("oil").setup({
   view_options = {
     show_hidden = true,
   }
 })
+
 require('nvim-ts-autotag').setup()
+
 

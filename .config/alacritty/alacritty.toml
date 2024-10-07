@@ -1,7 +1,7 @@
 # Colors (Everforest Dark)
 import = [
   # "~/.config/alacritty/gruvbox.toml",
-  "~/.config/alacritty/leaf.toml",
+  "~/.config/alacritty/posterpole.toml",
 ]
 
 [mouse]
@@ -14,3 +14,4 @@ size = 11
 [window]
 padding = { x = 0, y = 0 }
 opacity = 0.98
+blur = true

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+
+options="Lutris\nCalibre\nDiscord\nMinecraft"
+
+chosen=$(echo -e "$options" | rofi -dmenu -i -p "Select")
+
+case "$chosen" in
+    Lutris)
+        lutris ;;
+    Calibre)
+        calibre ;;
+    Discord)
+        discord ;;
+    Minecraft)
+        minecraft-launcher ;;
+esac
