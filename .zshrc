@@ -353,3 +353,4 @@ alias python=~/.python-env/bin/python3.12
 alias pip=~/.python-env/bin/pip3
 
 export PATH=$PATH:/home/otavio/.spicetify
+export TERM=xterm-256color

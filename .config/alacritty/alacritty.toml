@@ -6,6 +6,7 @@ import = [
 
 [mouse]
 hide_when_typing = true
+
 [font]
 normal = { family = "CaskaydiaMonoNerdFont", style = "Regular" }
 # normal = { family = "HackNerdFont", style = "Regular" }

@@ -1,11 +1,15 @@
 return {
 
   {
-    "norcalli/nvim-colorizer.lua"
+    "rose-pine/neovim",
+    lazy = false,
   },
   {
     "ilof2/posterpole.nvim",
     lazy = false,
+  },
+  {
+    "norcalli/nvim-colorizer.lua"
   },
   {
     'nvim-telescope/telescope.nvim',

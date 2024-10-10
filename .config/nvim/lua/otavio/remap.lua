@@ -40,18 +40,18 @@ vks("n", "<Esc>", "<cmd>noh<CR>")
 
 -- NvTerm
 vks("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true) )
-vks("n", "<A-h>", function()
-	require('nvterm.terminal').toggle "horizontal"
-end);
-vks("t", "<A-h>", function()
-	require('nvterm.terminal').toggle "horizontal"
-end);
-vks("n", "<A-v>", function()
-	require('nvterm.terminal').toggle "vertical"
-end);
-vks("t", "<A-v>", function()
-	require('nvterm.terminal').toggle "vertical"
-end);
+-- vks("n", "<A-h>", function()
+-- 	require('nvterm.terminal').toggle "horizontal"
+-- end);
+-- vks("t", "<A-h>", function()
+-- 	require('nvterm.terminal').toggle "horizontal"
+-- end);
+-- vks("n", "<A-v>", function()
+-- 	require('nvterm.terminal').toggle "vertical"
+-- end);
+-- vks("t", "<A-v>", function()
+-- 	require('nvterm.terminal').toggle "vertical"
+-- end);
 vks("n", "<leader>t", "<cmd>term <CR>")
 
 -- visual change lines
@@ -74,7 +74,7 @@ end);
 vks("v", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>");
 
 --copilot
-vim.keymap.set('i', '<C-i>', 'copilot#Accept("\\<CR>")', {
+vim.keymap.set('i', '<C-[>', 'copilot#Accept("\\<CR>")', {
   expr = true,
   replace_keycodes = false
 })
