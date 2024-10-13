@@ -5,11 +5,6 @@ return {
     lazy = false,
   },
   {
-    'mrcjkb/rustaceanvim',
-    version = '^5',
-    lazy = false,
-  },
-  {
     "norcalli/nvim-colorizer.lua"
   },
   {

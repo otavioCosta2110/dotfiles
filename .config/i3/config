@@ -229,8 +229,8 @@ font pango:Hack Regular 13
 
 ################# assign applications to workspaces 
 
-# assign [class="Vivaldi"] $ws1
-assign [class="firefox"] $ws1
+assign [class="Vivaldi"] $ws1
+# assign [class="firefox"] $ws1
 # assign [title="nvim"] $ws2
 # assign [class="obsidian"] $ws3
 # assign [class="Spotube"] $ws11

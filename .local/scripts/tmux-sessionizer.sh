@@ -22,19 +22,18 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     exit 0
 fi
 
-# Check if the session exists, if not create it
 if ! tmux has-session -t="$selected_name" 2> /dev/null; then
     tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-# Check if there are any clients attached to the session
 client_count=$(tmux list-clients -t="$selected_name" | wc -l)
 
+# idk why this fucking works
+export TERM=screen-256color
+
 if [[ $client_count -eq 0 ]]; then
-    # Create a new client if there are no clients
-    tmux attach-session -t "$selected_name" || tmux new-window -t "$selected_name"
+    tmux -2 attach-session -t "$selected_name" || tmux new-window -t "$selected_name"
 else
-    # Switch to the session if there are existing clients
-    tmux switch-client -t "$selected_name"
+    tmux -2 switch-client -t "$selected_name"
 fi
 

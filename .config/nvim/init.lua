@@ -6,7 +6,7 @@ require("otavio.set")
 require("posterpole").setup({
   colorless_bg = true,
   transparent = true,
-  fg_saturation = 10,
+  fg_saturation = 5,
 })
 
 vim.cmd.colorscheme "posterpole"
