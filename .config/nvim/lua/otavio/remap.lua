@@ -14,7 +14,7 @@ vks("n", "<C-k>", "<C-w>k")
 vks("n", "<C-j>", "<C-w>j")
 
 --select all
-vks("n", "<C-S-a>", "gg<S-v>G")
+vks("n", "<C-A-a>", "gg<S-v>G")
 -- save file
 vks("n", "<C-s>", ":w<cr>")
 

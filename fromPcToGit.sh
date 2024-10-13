@@ -10,6 +10,7 @@ rm -r ./.config
 rm -r ./.local
 rm -r ./.fonts
 rm ./.zshrc
+rm ./.tmux.conf
 
 mkdir .config
 
@@ -20,3 +21,4 @@ mkdir -p .local/scripts
 cp -r ~/.local/scripts/* ./.local/scripts
 cp -r ~/.fonts ./.fonts
 cp ~/.zshrc ./.zshrc
+cp ~/.tmux.conf ./.tmux.conf

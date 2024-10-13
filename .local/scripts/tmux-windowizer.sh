@@ -11,3 +11,4 @@ fi
 
 shift
 tmux send-keys -t $target "$*
+"

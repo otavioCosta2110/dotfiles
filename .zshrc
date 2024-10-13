@@ -354,3 +354,4 @@ alias pip=~/.python-env/bin/pip3
 
 export PATH=$PATH:/home/otavio/.spicetify
 export TERM=xterm-256color
+tmux source-file ~/.tmux.conf

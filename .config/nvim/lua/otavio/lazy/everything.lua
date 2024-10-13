@@ -1,11 +1,12 @@
 return {
 
   {
-    "rose-pine/neovim",
+    "ilof2/posterpole.nvim",
     lazy = false,
   },
   {
-    "ilof2/posterpole.nvim",
+    'mrcjkb/rustaceanvim',
+    version = '^5',
     lazy = false,
   },
   {

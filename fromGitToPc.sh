@@ -12,6 +12,7 @@ rm -r ~/.config/i3
 rm -r ~/.config/nvim
 rm -r ~/.fonts
 rm ~/.zshrc
+rm ~/.tmux.conf
 
 cp -r ./.config/alacritty ~/.config/alacritty
 cp -r ./.config/i3 ~/.config/i3
@@ -19,4 +20,5 @@ cp -r ./.config/nvim ~/.config/nvim
 mkdir -p ~/.local/scripts
 cp -r ./.local/scripts ~/.local/scripts
 cp .zshrc ~/.zshrc
+cp .tmux.conf ~/.tmux.conf
 cp -r ./.fonts ~/.fonts
