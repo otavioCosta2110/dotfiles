@@ -127,5 +127,6 @@ export TERM=screen-256color
 
 bindkey -s ^f "~/.local/scripts/tmux-sessionizer.sh\n"
 
-export TERM=screen-256color
+bindkey '^K' history-search-backward  # Ctrl + k acts like up arrow
+bindkey '^J' history-search-forward   # Ctrl + j acts like down arrow
 

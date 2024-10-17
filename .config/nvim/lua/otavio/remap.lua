@@ -15,16 +15,14 @@ vks("n", "<C-j>", "<C-w>j")
 
 --select all
 vks("n", "<C-A-a>", "gg<S-v>G")
+
 -- save file
 vks("n", "<C-s>", ":w<cr>")
 
 -- buffers
-vks("n", "<leader>n", vim.cmd.enew)
 vks("n", "<leader>v", vim.cmd.vsp)
 
-
 -- nvim tree
-vks("n", "<leader>e", vim.cmd.NvimTreeToggle);
 vks("n", "<leader>e", vim.cmd.Oil);
 
 -- Telescope
@@ -33,30 +31,23 @@ vks("n", "<leader>fw", telescope.live_grep, {})
 vks("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
 vks("n", "<leader>b", telescope.buffers, {})
 vks("n", "<leader>fh", telescope.help_tags, {})
+
 vks("n", "<C-c>", "<cmd>noh<CR>")
+vks("n", "<Esc>", "<cmd>noh<CR>")
 vks("i", "<C-c>", "<Esc>")
 vks("n", "<C-c>", "<Esc>")
-vks("n", "<Esc>", "<cmd>noh<CR>")
 
--- NvTerm
 vks("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true) )
--- vks("n", "<A-h>", function()
--- 	require('nvterm.terminal').toggle "horizontal"
--- end);
--- vks("t", "<A-h>", function()
--- 	require('nvterm.terminal').toggle "horizontal"
--- end);
--- vks("n", "<A-v>", function()
--- 	require('nvterm.terminal').toggle "vertical"
--- end);
--- vks("t", "<A-v>", function()
--- 	require('nvterm.terminal').toggle "vertical"
--- end);
+
 vks("n", "<leader>t", "<cmd>term <CR>")
 
 -- visual change lines
 vks("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 
 -- copy to sys clipboard
 vks("n", "<leader>y", "\"+y")
@@ -71,6 +62,7 @@ vks("i", "<C-c>", "<Esc>")
 vks("n", "<leader>/", function()
     require("Comment.api").toggle.linewise.current()
 end);
+
 vks("v", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>");
 
 --copilot

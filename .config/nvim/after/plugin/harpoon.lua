@@ -25,5 +25,6 @@ vks("n", "<A-o>", function() harpoon:list():select(3)end)
 vks("n", "<A-p>", function() harpoon:list():select(4)end)
 vks("n", "<A-j>", function() harpoon:list():select(5) end);
 vks("n", "<A-k>", function() harpoon:list():select(6)end)
-vks("n", "<A-l>", function() harpoon:list():select(7)end)
+vks("n", "<A-;>", function() harpoon:list():select(7)end)
+vks("n", "<A-'>", function() harpoon:list():select(8)end)
 

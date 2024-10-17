@@ -3,12 +3,22 @@ require("otavio.lazy_init")
 require("otavio.remap")
 require("otavio.set")
 
+local function check_time()
+  return os.date("*t").hour
+end
+
+local fg_saturation = 10
+if check_time() <= 18 then
+  fg_saturation = 15;
+else
+  fg_saturation = 10;
+end
+
 require("posterpole").setup({
   colorless_bg = true,
   transparent = true,
-  fg_saturation = 5,
+    fg_saturation = fg_saturation,
 })
-
 vim.cmd.colorscheme "posterpole"
 
 vim.cmd("highlight TelescopeBorder guibg=none")
