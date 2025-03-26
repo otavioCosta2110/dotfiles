@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nohup old-game-launcher &>/dev/null 
