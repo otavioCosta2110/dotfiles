@@ -8,6 +8,7 @@ else
     echo -e ~/.config/nvim/;
     echo -e ~/.config/i3/;
     echo -e ~/.config/alacritty/;
+    echo -e ~/.config/hypr/;
     ) | fzf )
 fi
 

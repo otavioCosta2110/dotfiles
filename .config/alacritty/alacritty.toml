@@ -16,5 +16,5 @@ normal = { family = "CaskaydiaMonoNerdFont", style = "Regular" }
 size = 12.5
 
 [window]
-padding = { x = 0, y = 0 }
-opacity = 0.8
+# padding = { x = 7, y = 7 }
+# opacity = 0.8
