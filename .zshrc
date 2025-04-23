@@ -123,4 +123,5 @@ fi
 alias ohmyzsh="mate ~/.oh-my-zsh"
 alias st0="shutdown -tf 0"
 export PATH=$PATH:/home/otavio/go/bin
-
+export PATH=$PATH:/home/otavio/.local/scripts
+alias PATH=$PATH:/home/otavio/.python-env/bin/

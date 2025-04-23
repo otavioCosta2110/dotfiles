@@ -10,7 +10,7 @@
   [colors.normal]
     black   = "0x1E1B1F"  # leaf_dark_1 (bgColorlessDark, 260, 0, 12)
     red     = "0xCC565B"  # leaf_red_0 (red100, 360, 35, 55)
-    green   = "0x3c7d41"  # leaf_green_0 (green100, 140, 20, 50)
+    green   = "0x38a842"  # leaf_green_0 (green100, 140, 20, 50)
     yellow  = "0xE5BF79"  # leaf_yellow_0 (yellow100, 25, 30, 60)
     blue    = "0x6296B8"  # leaf_blue_0 (blue100, 210, 25, 50)
     magenta = "0x9777B3"  # leaf_purple_0 (purple100, 284, 25, 50)

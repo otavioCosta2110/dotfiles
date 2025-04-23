@@ -13,8 +13,8 @@ hide_when_typing = true
 [font]
 normal = { family = "CaskaydiaMonoNerdFont", style = "Regular" }
 # normal = { family = "HackNerdFont", style = "Regular" }
-size = 12.5
+size = 15
 
 [window]
-# padding = { x = 7, y = 7 }
-# opacity = 0.8
+# padding = { x = 2, y = 2 }
+opacity = 0.85

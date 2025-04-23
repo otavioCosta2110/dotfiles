@@ -105,6 +105,9 @@ bindsym $mod2+space exec --no-startup-id ~/.local/scripts/changelayout.sh
 # discord
 bindsym $mod2+D exec discord
 
+# record screen
+bindsym $mod+ctrl+r exec /home/otavio/.local/scripts/recording.sh
+
 ################# reload changed configuration     
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -192,13 +195,15 @@ bindsym $mod+Mod1+Ctrl+Up resize grow height 1 px or 1 ppt
 bindsym $mod+Mod1+Ctrl+Down resize shrink height 1 px or 1 ppt
 bindsym $mod+Mod1+Ctrl+Left resize grow width 1 px or 1 ppt
 
-font pango:Hack Regular 13
+# font pango:Hack Regular 13
 
 # Autotiling
 exec_always --no-startup-id autotiling
 
 # audio system tray
-exec --no-startup-id volctl
+# exec --no-startup-id volctl
+# audio switcher systray
+exec --no-startup-id indicator-sound-switcher
 
 # picom
 # exec picom --config ~/.config/picom/picom.conf &
@@ -210,16 +215,18 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id nm-applet
 
 # wallpaper
-exec --no-startup-id /home/otavio/.local/scripts/nitrogen.sh
+# exec --no-startup-id /home/otavio/.local/scripts/nitrogen.sh
 
 # blue light filter
-exec --no-startup-id redshift -l 29.1913:54.8656
+exec --no-startup-id redshift -l 29.1913:54.8656 &
+# bindsym $mod+a exec --no-startup-id redshift -l 29.1913:54.8656 &
 ################# system applications       
 
-exec --no-startup-id xfce4-power-manager &
+# exec --no-startup-id xfce4-power-manager &
 
 # exec --no-startup-id xfsettingsd &
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+# exec --no-startup-id dunst &
 
 ################# applications keyboard shortcuts  
 
@@ -242,6 +249,9 @@ bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
 # pavucontrol
 bindsym control+mod1+u exec --no-startup-id pavucontrol
 
+# pavucontrol
+# bindsym $mod+ctrl+s exec spotify
+
 # xkill
 bindsym --release $mod+Escape exec xkill
 
@@ -258,13 +268,21 @@ bindsym $mod+Shift+f exec --no-startup-id "~/.local/scripts/favs"
 bindsym $mod+Shift+V exec $term -e "/home/otavio/.local/scripts/tmux-sessionizer.sh"
 
 bindsym Print exec --no-startup-id flameshot gui
+bindsym $mod+Ctrl+s exec --no-startup-id flameshot gui
 ################# floating or tiled rules         
 
 for_window [title=".*DEBUG.*"] floating enable
 for_window [class="Blueberry.py"] floating enable
+for_window [class="nl.hjdskes.gcolor3"] floating enable
+for_window [class="Nl.hjdskes.gcolor3"] floating enable
 for_window [class="pavucontrol"] floating enable
 for_window [class="Xfce4-settings-manager"] floating enable
 for_window [class="Xfce4-taskmanager"] floating enable
+for_window [class="Places"] floating enable
+for_window [class="Library"] floating enable
+for_window [class="library"] floating enable
+for_window [class="Places" instance="zen"] floating enable
+for_window [class="zen" title="Library"] floating enable
 
 # for_window [window_role="^gimp-toolbox-color-dialog$"] floating enable
 for_window [window_role="pop-up"] floating enable
@@ -342,7 +360,8 @@ mode "$mode_gaps_outer" {
 }
 
 ################# bar appearance                   
-set $bg #282828
+set $bg #000000
+set $white #ffffff
 set $red #cc241d
 set $green #98971a
 set $yellow #A89984
@@ -350,26 +369,26 @@ set $blue #458588
 set $purple #b16286
 set $aqua #3C3836
 set $gray #a89984
-set $darkgray #1d2021
+set $darkgray #bdbdbd
 bar {
     # workspace_buttons yes
-	# font pango:Noto Sans 12
-  font pango:Hack Regular 8
-	# position top
+	font pango:Noto Sans 8
+  # font pango:Hack Regular 8
+    tray_output primary
     position bottom
     # mode hide
 
     status_command i3status -c ~/.config/i3/i3status.conf 
 
-    # colors {
-    #     background $bg
+    colors {
+        background $bg
     #     statusline $yellow
     #     #                    border  backgr. text
-    #     focused_workspace    $aqua $aqua $yellow
+        focused_workspace    $white $white $bg
     #     inactive_workspace   $darkgray $bg $yellow
-    #     active_workspace     $darkgray $bg $yellow
+        # active_workspace     $darkgray $bg $yellow
     #     urgent_workspace     $red $red $bg
-    #     }
+        }
 }
 #     ##STOP THEMING BAR
 #
@@ -384,10 +403,10 @@ bar {
 
 bindsym $mod+r mode "resize"
 mode "resize" {
-        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
         bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
-        bindsym semicolon resize grow width 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt

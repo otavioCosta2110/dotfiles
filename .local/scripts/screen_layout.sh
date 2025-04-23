@@ -28,13 +28,13 @@ else
     
     if xrandr | grep -q "HDMI-A-0 connected"; then
         echo "HDMI-A-0 connected - setting up dual monitors"
-        xrandr --output eDP --primary --mode 1920x1080 --pos 1920x0 --rotate normal \
-               --output HDMI-A-0 --mode 1920x1080 --pos 0x0 --rotate normal
+        xrandr --output eDP --mode 1920x1080 --pos 1920x0 --rotate normal \
+               --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal
     else
         echo "Only eDP connected - single monitor setup"
         xrandr --output eDP --mode 1920x1080 --pos 0x0 --rotate normal
     fi
-    i3-msg restart
+    # i3-msg restart
     {
       date
       echo "Monitor hotplug detected"
