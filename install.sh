@@ -16,8 +16,8 @@ for file in "${DOTFILES[@]}"; do
     if [ ! -d "$target_dir" ] && [ "$(dirname "$file")" != "." ]; then
         echo "Creating target directory: $target_dir"
         mkdir -p "$target_dir"
-        cp "$DOTFILES_DIR/$file" "$target_dir"
     fi
+    cp "$DOTFILES_DIR/$file" "$target_dir"
 done
 
 echo "Creating symlinks with stow..."
