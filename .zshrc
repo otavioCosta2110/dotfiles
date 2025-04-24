@@ -57,3 +57,25 @@ fi
 # Bind Keys
 bindkey '^P' up-history
 bindkey '^N' down-history
+# Enhanced Key Bindings (Oh-My-Zsh style)
+bindkey -e                                        # Emacs keybindings (recommended)
+bindkey '^[[A' up-line-or-search                  # Up arrow - history search
+bindkey '^[[B' down-line-or-search                # Down arrow - history search
+bindkey '^[OA' up-line-or-search                  # Alternative up arrow (some terminals)
+bindkey '^[OB' down-line-or-search                # Alternative down arrow
+bindkey '^R' history-incremental-search-backward  # Ctrl+R - history search
+bindkey '^A' beginning-of-line                    # Ctrl+A - move to start
+bindkey '^E' end-of-line                          # Ctrl+E - move to end
+bindkey '^[b' backward-word                       # Alt+B - back one word
+bindkey '^[f' forward-word                        # Alt+F - forward one word
+bindkey '^[[3~' delete-char                       # Delete key
+bindkey '^H' backward-delete-word                 # Ctrl+Backspace - delete word
+bindkey '^[d' kill-word                           # Alt+D - delete word forward
+bindkey '^U' backward-kill-line                   # Ctrl+U - delete to start
+bindkey '^K' kill-line                            # Ctrl+K - delete to end
+bindkey '^Y' yank                                 # Ctrl+Y - paste
+bindkey '^W' backward-kill-word                   # Ctrl+W - delete previous word
+
+# Disable Ctrl+S and Ctrl+Q flow control
+stty -ixon
+
