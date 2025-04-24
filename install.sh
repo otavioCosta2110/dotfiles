@@ -17,7 +17,7 @@ for file in "${DOTFILES[@]}"; do
         echo "Creating target directory: $target_dir"
         mkdir -p "$target_dir"
     fi
-    cp "$DOTFILES_DIR/$file" "$target_dir"
+    cp -r "$DOTFILES_DIR/$file" "$target_dir"
 done
 
 echo "Creating symlinks with stow..."
