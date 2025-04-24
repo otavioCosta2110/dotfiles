@@ -103,4 +103,6 @@ bindkey '^[[1;3C' forward-word     # Alt+Right
 
 # Disable Ctrl+S and Ctrl+Q flow control
 stty -ixon
-
+# Case-insensitive tab completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+unset CASE_SENSITIVE
