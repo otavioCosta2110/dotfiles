@@ -54,3 +54,6 @@ if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; 
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 fi
 
+# Bind Keys
+bindkey '^P' up-history
+bindkey '^N' down-history
