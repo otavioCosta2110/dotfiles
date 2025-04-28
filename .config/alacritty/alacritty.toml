@@ -1,7 +1,7 @@
 # Colors (Everforest Dark)
 general.import = [
-  # "~/.config/alacritty/gruvbox.toml",
-  "~/.config/alacritty/posterpole.toml",
+  "~/.config/alacritty/gruvbox.toml",
+  # "~/.config/alacritty/posterpole.toml",
 ]
 
 [env]
@@ -11,10 +11,9 @@ TERM = "xterm-256color"
 hide_when_typing = true
 
 [font]
-normal = { family = "CaskaydiaMonoNerdFont", style = "Regular" }
+# normal = { family = "CaskaydiaMonoNerdFont", style = "Regular" }
+normal = { family = "UbuntuMonoNerdFont", style = "Regular" }
 # normal = { family = "HackNerdFont", style = "Regular" }
-size = 15
+size = 18
 
 [window]
-# padding = { x = 2, y = 2 }
-opacity = 0.85

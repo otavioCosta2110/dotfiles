@@ -215,7 +215,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id nm-applet
 
 # wallpaper
-# exec --no-startup-id /home/otavio/.local/scripts/nitrogen.sh
+exec --no-startup-id /home/otavio/.local/scripts/nitrogen.sh
 
 # blue light filter
 exec --no-startup-id redshift -l 29.1913:54.8656 &
@@ -316,7 +316,7 @@ popup_during_fullscreen smart
 ################# i3 gaps next                     
 for_window [class="^.*"] border pixel 2
 gaps inner 1
-gaps outer 1
+gaps outer 0
 smart_gaps on
 smart_borders on
 
@@ -361,7 +361,7 @@ mode "$mode_gaps_outer" {
 
 ################# bar appearance                   
 set $bg #000000
-set $white #ffffff
+set $white #d4be98
 set $red #cc241d
 set $green #98971a
 set $yellow #A89984
@@ -378,13 +378,14 @@ bar {
     position bottom
     # mode hide
 
-    status_command i3status -c ~/.config/i3/i3status.conf 
+    # status_command i3status -c ~/.config/i3/i3status.conf 
+    status_command i3status-rs
 
     colors {
-        background $bg
+        # background $bg
     #     statusline $yellow
     #     #                    border  backgr. text
-        focused_workspace    $white $white $bg
+        # focused_workspace    $white $white $bg
     #     inactive_workspace   $darkgray $bg $yellow
         # active_workspace     $darkgray $bg $yellow
     #     urgent_workspace     $red $red $bg

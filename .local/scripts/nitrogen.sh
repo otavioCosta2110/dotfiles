@@ -4,10 +4,11 @@ for i in $(seq 0 1); do
     # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/lain.jpg --head=$i
     # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/lain_red.jpg --head=$i
     # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/rei_alley.jpg --head=$i
-    nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/rei_flower.png --head=$i
+    # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/rei_flower.png --head=$i
     # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/lain_red.jpg --head=$i
     # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/reiblk.png --head=$i
     # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/rei_blue.png --head=$i
+    nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/rei_look.png --head=$i
 done
 # nitrogen --set-zoom-fill /home/otavio/Pictures/reicity.png --head=0
 # nitrogen --set-zoom-fill /home/otavio/Pictures/reicity.png --head=1

@@ -4,7 +4,7 @@
   # Default colors
   [colors.primary]
     background = "0x000000"
-    foreground = "0xebdbb2"
+    foreground = "0xd4be98"
 
   # Normal colors
   [colors.normal]

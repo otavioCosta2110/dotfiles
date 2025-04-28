@@ -9,6 +9,7 @@ DOTFILES=(
     .config/nvim
     .config/alacritty
     .config/i3
+    .config/i3status-rs
 )
 
 for file in "${DOTFILES[@]}"; do

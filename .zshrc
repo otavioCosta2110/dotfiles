@@ -43,7 +43,7 @@ zstyle ':vcs_info:*' unstagedstr ' *'
 zstyle ':vcs_info:*' stagedstr ' +'
 zstyle ':vcs_info:git:*' formats '[%b]'
 zstyle ':vcs_info:git:*' actionformats '[%b|%a]'
-zstyle ':vcs_info:git:*' formats '[%b%m%u%c]'  # Add %m for ahead/behind info
+zstyle ':vcs_info:git:*' formats '%b%m%u%c '  # Add %m for ahead/behind info
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' unstagedstr ' %F{red}*%F{green}'      # Unstaged changes
 zstyle ':vcs_info:git:*' stagedstr ' %F{red}+%F{green}'      # Unstaged changes
@@ -65,7 +65,7 @@ zstyle ':vcs_info:git+set-message:*' hooks git-ahead-behind
 }
 
 setopt prompt_subst
-PROMPT='%F{green}${vcs_info_msg_0_}%f%F{blue}[%~]%f$ '
+PROMPT='%F{green}${vcs_info_msg_0_}%f%F{blue}%~%F{green}❯%f '
 
 if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 
@@ -106,3 +106,5 @@ stty -ixon
 # Case-insensitive tab completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 unset CASE_SENSITIVE
+eval "$(zoxide init zsh)"
+alias cd=z
