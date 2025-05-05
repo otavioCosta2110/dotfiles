@@ -1,0 +1,81 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+
+/* My Mostly Used waybar config incase you wonder :) */
+{
+  "include": [
+    "$HOME/.config/waybar/Modules",
+    "$HOME/.config/waybar/ModulesWorkspaces",
+    "$HOME/.config/waybar/ModulesCustom",
+    "$HOME/.config/waybar/ModulesGroups",
+    "$HOME/.config/waybar/UserModules",
+  ],
+  "layer": "top",
+  //"mode": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "position": "top",
+  "spacing": 3,
+  "fixed-center": true,
+  "ipc": true,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+
+  "modules-left": [
+    "tray",
+  "custom/separator#blank",
+  "clock",
+  "custom/separator#blank",
+  "hyprland/window",
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces#rw",
+    "custom/separator#dot-line",
+    "group/notify",	
+  ],
+
+  "modules-right": [
+    "custom/separator#blank",
+  "battery",
+  "custom/separator#dot-line",
+  "group/mobo_drawer",
+  "custom/separator#line",  
+  "pulseaudio",
+  "custom/separator#line",  
+  "backlight",
+  "custom/separator#line",  
+  "custom/wl-gammarelay-temperature",
+  "custom/separator#blank", 
+  "group/status",
+  ],
+  "clock": {
+    "format": "{:%d %b %Y | %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "on-click": "alacritty --title calcurse -e bash -c calcurse",
+    "interval": 10
+  },
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "  Muted",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+  "backlight": {
+    "device": "acpi_video0",
+    "format": "{icon} {percent}%",
+    "on-scroll-up": "/home/otavio/.config/hypr/scripts/brightness.sh --inc",
+    "on-scroll-down": "/home/otavio/.config/hypr/scripts/brightness.sh --dec",
+  },
+ "custom/wl-gammarelay-temperature": {
+    "format": " {}",
+    "exec": "wl-gammarelay --subscribe Temperature",
+    "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +100",
+    "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -100"
+  },
+  }
+}
