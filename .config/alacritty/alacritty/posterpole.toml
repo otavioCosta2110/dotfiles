@@ -1,0 +1,31 @@
+# Colors (Leaf Dark Theme)
+[colors]
+
+  # Default colors
+  [colors.primary]
+    background = "0x000000"  # leaf_dark_0
+    foreground = "0xebdbb2"  # leaf_light_1
+
+  # Normal colors
+  [colors.normal]
+    black   = "0x1E1B1F"  # leaf_dark_1 (bgColorlessDark, 260, 0, 12)
+    red     = "0xCC565B"  # leaf_red_0 (red100, 360, 35, 55)
+    green   = "0x38a842"  # leaf_green_0 (green100, 140, 20, 50)
+    yellow  = "0xE5BF79"  # leaf_yellow_0 (yellow100, 25, 30, 60)
+    blue    = "0x6296B8"  # leaf_blue_0 (blue100, 210, 25, 50)
+    magenta = "0x9777B3"  # leaf_purple_0 (purple100, 284, 25, 50)
+    cyan    = "0x51AEB9"  # leaf_aqua_0 (calculated equivalent of cyan)
+    white   = "0xD4D2D3"  # leaf_light_6 (white100, 35, 20, 65)
+
+  # Bright colors
+  [colors.bright]
+    black   = "0x4F4D4E"  # leaf_dark_4 (black200, 250, 15, 18)
+    red     = "0xB2454A"  # leaf_red_5 (deepRed100, 0, 40, 30)
+    green   = "0x48624E"  # leaf_green_5 (deepGreen100, 150, 20, 20)
+    yellow  = "0x8E754B"  # leaf_yellow_5 (calculated equivalent)
+    blue    = "0x345E7D"  # leaf_blue_5 (blue200, 210, 35, 50)
+    magenta = "0x5F4973"  # leaf_purple_5 (purple200, 284, 30, 50)
+    cyan    = "0x326F73"  # leaf_aqua_5 (brightGreen100, 160, 40, 20)
+    white   = "0xE1E4DC"  # leaf_light_2 (calculated equivalent of bright white)
+
+
