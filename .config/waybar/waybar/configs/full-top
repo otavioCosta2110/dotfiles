@@ -9,11 +9,11 @@
     "$HOME/.config/waybar/ModulesGroups",
     "$HOME/.config/waybar/UserModules",
   ],
-  "layer": "top",
+  "layer": "bottom",
   //"mode": "dock",
   "exclusive": true,
   "passthrough": false,
-  "position": "top",
+  "position": "bottom",
   "spacing": 3,
   "fixed-center": true,
   "ipc": true,
@@ -22,23 +22,19 @@
   "margin-right": 0,
 
   "modules-left": [
-    "tray",
-  "custom/separator#blank",
-  "clock",
-  "custom/separator#blank",
-  "hyprland/window",
+    "hyprland/workspaces#2",
+  "custom/separator#dot-line",  
+    "hyprland/window",
   ],
 
   "modules-center": [
-    "hyprland/workspaces#rw",
-    "custom/separator#dot-line",
-    "group/notify",	
+    "clock",
   ],
 
   "modules-right": [
     "custom/separator#blank",
   "battery",
-  "custom/separator#dot-line",
+  "custom/separator#line",  
   "group/mobo_drawer",
   "custom/separator#line",  
   "pulseaudio",
@@ -46,8 +42,8 @@
   "backlight",
   "custom/separator#line",  
   "custom/wl-gammarelay-temperature",
-  "custom/separator#blank", 
-  "group/status",
+  "custom/separator#line",  
+  "tray",
   ],
   "clock": {
     "format": "{:%d %b %Y | %H:%M}",
@@ -70,12 +66,30 @@
     "format": "{icon} {percent}%",
     "on-scroll-up": "/home/otavio/.config/hypr/scripts/brightness.sh --inc",
     "on-scroll-down": "/home/otavio/.config/hypr/scripts/brightness.sh --dec",
+    "on-click": "/home/otavio/.config/hypr/scripts/brightness.sh --set 100",
+    "on-click-right": "/home/otavio/.config/hypr/scripts/brightness.sh --set 1",
   },
- "custom/wl-gammarelay-temperature": {
+  "custom/wl-gammarelay-temperature": {
     "format": " {}",
     "exec": "wl-gammarelay --subscribe Temperature",
     "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +100",
     "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -100"
   },
+  "hyprland/workspaces#2": {
+    "format": "{name}",
+    "format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十",
+    },
+    "on-click": "activate",
+    "all-outputs": false,
   }
 }

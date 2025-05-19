@@ -11,10 +11,9 @@ export TERM=xterm-256color
 # Aliases
 alias tmux='tmux -2'
 alias v=nvim
-alias python=~/.python-env/bin/python3.13
-alias pip=~/.python-env/bin/pip3
-alias st0="shutdown -tf 0"
 alias ls="ls --color=auto"
+alias ls="exa --icons"
+alias cd="z"
 
 # Tmux configuration
 if tmux has-session 2>/dev/null; then
@@ -65,7 +64,7 @@ zstyle ':vcs_info:git+set-message:*' hooks git-ahead-behind
 }
 
 setopt prompt_subst
-PROMPT='%F{green}${vcs_info_msg_0_}%f%F{blue}%~%F{green}❯%f '
+PROMPT='%F{green}${vcs_info_msg_0_}%f%F{blue}%~%F{green}%f '
 
 if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 
@@ -74,7 +73,14 @@ if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; 
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 fi
 
+tmux-sessionizer() {
+    tmux-sessionizer.sh
+    zle reset-prompt
+}
+zle -N tmux-sessionizer  # Register as a widget
+
 # Bind Keys
+bindkey '^F' tmux-sessionizer
 bindkey '^P' up-history
 bindkey '^N' down-history
 # Enhanced Key Bindings (Oh-My-Zsh style)

@@ -67,7 +67,7 @@
 	"format-charging": " {capacity}%",
 	"format-plugged": "󱘖 {capacity}%",
 	"format-alt-click": "click",
-	"format-full": "{icon} Full",
+	"format-full": "{icon}",
 	"format-alt": "{icon} {time}",
 	"format-icons": [
 		"󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
@@ -298,7 +298,7 @@
 },
 
 "power-profiles-daemon": {
-  "format": ": {profile}",
+  "format": " {profile}",
   "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
   "tooltip": true,
   "format-icons": {
