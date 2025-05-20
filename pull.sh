@@ -12,9 +12,10 @@ DOTFILES=(
     .config/nvim
     .config/alacritty
     .config/i3
-    .config/i3status-rs
+    .config/i3status-rust
     .config/hypr
     .config/waybar
+    .local/scripts
 )
 
 main() {

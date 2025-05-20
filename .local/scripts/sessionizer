@@ -7,6 +7,7 @@ else
     find ~/httpTests ~/dev -mindepth 1 -maxdepth 1 -type d;
     echo -e ~/.config/nvim/;
     echo -e ~/.config/i3/;
+    echo -e ~/.config/hypr/;
     ) | fzf )
 fi
 

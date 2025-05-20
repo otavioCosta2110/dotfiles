@@ -80,7 +80,6 @@ tmux-sessionizer() {
 zle -N tmux-sessionizer  # Register as a widget
 
 # Bind Keys
-bindkey '^F' tmux-sessionizer
 bindkey '^P' up-history
 bindkey '^N' down-history
 # Enhanced Key Bindings (Oh-My-Zsh style)
@@ -101,6 +100,7 @@ bindkey '^U' backward-kill-line                   # Ctrl+U - delete to start
 bindkey '^K' kill-line                            # Ctrl+K - delete to end
 bindkey '^Y' yank                                 # Ctrl+Y - paste
 bindkey '^W' backward-kill-word                   # Ctrl+W - delete previous word
+bindkey '^F' tmux-sessionizer
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 bindkey '^[[1;5D' backward-word    # Ctrl+Left
 bindkey '^[[1;5C' forward-word     # Ctrl+Right

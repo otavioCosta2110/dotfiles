@@ -77,6 +77,12 @@ tooltip {
 #workspaces button {
   all: unset;
   padding: 0px 5px;
+  color: alpha(#d4be98, .5);
+  /* transition: all .2s ease; */
+}
+#workspaces button.empty {
+  all: unset;
+  padding: 0px 5px;
   color: alpha(grey, .4);
   /* transition: all .2s ease; */
 }
@@ -92,20 +98,10 @@ tooltip {
   border: 20px;
 }
 
-#workspaces button.empty {
-  color: #7a7a7a;
-  border: none;
-}
-
 #workspaces button.empty:hover {
   color: rgba(0, 0, 0, 0);
   border: none;
   /* transition: all 1s ease; */
-}
-
-#workspaces button.empty.active {
-  color: grey;
-  border: none;
 }
 
 #bluetooth {
