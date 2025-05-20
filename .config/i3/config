@@ -95,7 +95,7 @@ bindsym $mod+Shift+plus move container to workspace $ws12; workspace $ws12
 bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
 
 # bindsym $mod+d exec --no-startup-id rofi -no-config -no-lazy-grab -show drun -modi drun
-bindsym $mod+d exec --no-startup-id rofi -show drun -modi drun
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # change keyboard layout
 bindsym $mod2+space exec --no-startup-id ~/.local/scripts/changelayout.sh
@@ -206,7 +206,9 @@ exec_always --no-startup-id autotiling
 exec --no-startup-id indicator-sound-switcher
 
 # picom
-# exec picom --config ~/.config/picom/picom.conf &
+exec picom &
+exec --no-startup-id picom &
+exec --no-startup-id /home/otavio/.local/scripts/screenlock.sh &
 
 # Authentication dialog
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -263,12 +265,13 @@ bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
 bindsym $mod+e exec Thunar
 
 # old-game-launcher
-bindsym $mod+Shift+s exec $term -e bash -c "/home/otavio/.local/scripts/run-old-game-launcher"
+bindsym $mod+Ctrl+s exec "/home/otavio/dev/popup-browser/start.sh"
+bindsym $mod+o exec $term -e bash -c "/home/otavio/.local/scripts/run-old-game-launcher"
 bindsym $mod+Shift+f exec --no-startup-id "~/.local/scripts/favs"
 bindsym $mod+Shift+V exec $term -e "/home/otavio/.local/scripts/tmux-sessionizer.sh"
 
 bindsym Print exec --no-startup-id flameshot gui
-bindsym $mod+Ctrl+s exec --no-startup-id flameshot gui
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 ################# floating or tiled rules         
 
 for_window [title=".*DEBUG.*"] floating enable
@@ -283,22 +286,23 @@ for_window [class="Library"] floating enable
 for_window [class="library"] floating enable
 for_window [class="Places" instance="zen"] floating enable
 for_window [class="zen" title="Library"] floating enable
+for_window [title="calcurse"] floating enable
 
 # for_window [window_role="^gimp-toolbox-color-dialog$"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="^Preferences$"] floating enable
 for_window [window_role="setup"] floating enable
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D default set Master '5%+'"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D default set Master '5%-'"
-bindsym XF86AudioMute exec --no-startup-id amixer -D default set Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id "~/.local/scripts/volume.sh --inc"
+bindsym XF86AudioLowerVolume exec --no-startup-id "~/.local/scripts/volume.sh --dec"
+bindsym XF86AudioMute exec --no-startup-id  "~/.local/scripts/volume.sh --toggle"
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioStop exec --no-startup-id playerctl stop
 ################# xbacklight                       
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 2+ && brightnessctl g 
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 2- && brightnessctl g 
+bindsym XF86MonBrightnessUp exec --no-startup-id  "~/.local/scripts/brightness.sh --inc"
+bindsym XF86MonBrightnessDown exec --no-startup-id "~/.local/scripts/brightness.sh --dec"
 
 # bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 2+
 # bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 2-
@@ -308,13 +312,13 @@ hide_edge_borders both
 bindsym $mod+shift+b exec --no-startup-id i3-msg border toggle
 
 bindsym $mod+t border normal
-bindsym $mod+y border pixel 2
+bindsym $mod+y border pixel 3
 bindsym $mod+u border none
 
 popup_during_fullscreen smart
 
 ################# i3 gaps next                     
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 3
 gaps inner 1
 gaps outer 0
 smart_gaps on
@@ -360,11 +364,11 @@ mode "$mode_gaps_outer" {
 }
 
 ################# bar appearance                   
-set $bg #000000
+set $bg #00000000
 set $white #d4be98
 set $red #cc241d
 set $green #98971a
-set $yellow #A89984
+set $yellow #735a2a
 set $blue #458588
 set $purple #b16286
 set $aqua #3C3836
@@ -381,12 +385,13 @@ bar {
     # status_command i3status -c ~/.config/i3/i3status.conf 
     status_command i3status-rs
 
+
     colors {
-        # background $bg
-    #     statusline $yellow
+        background $bg
+        # statusline $yellow
     #     #                    border  backgr. text
-        # focused_workspace    $white $white $bg
-    #     inactive_workspace   $darkgray $bg $yellow
+        focused_workspace    $yellow $yellow $white
+        inactive_workspace   $bg $bg $white
         # active_workspace     $darkgray $bg $yellow
     #     urgent_workspace     $red $red $bg
         }
@@ -395,7 +400,7 @@ bar {
 #
 #     ##START THEMING WM
 #     # class                 border  backgr. text    indicator
-# client.focused          $blue $blue $darkgray $blue 
+client.focused          $yellow $yellow $darkgray $yellow
 # client.focused_inactive $darkgray $darkgray $yellow $blue 
 # client.unfocused        $darkgray $darkgray $yellow $blue 
 # client.urgent           $red $red $white $red 
