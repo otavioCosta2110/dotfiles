@@ -3,3 +3,5 @@
 	name = Otávio Costa
 [credential]
 	helper = store
+[push]
+	autoSetupRemote = true

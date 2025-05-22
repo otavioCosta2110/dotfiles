@@ -2,10 +2,10 @@ icons_format = "{icon}"
 
 [theme.overrides]
 idle_bg = "#000000"
-idle_fg = "#ffffff"
-good_fg = "#ffffff"
+idle_fg = "#d4be98"
+good_fg = "#d4be98"
 good_bg = "#000000"
-warning_fg = "#ffffff"
+warning_fg = "#d4be98"
 warning_bg = "#000000"
 
 [icons]
