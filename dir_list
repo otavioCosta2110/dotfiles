@@ -8,4 +8,5 @@
 .config/i3status-rust
 .config/hypr
 .config/waybar
+.config/rofi
 .local/scripts
