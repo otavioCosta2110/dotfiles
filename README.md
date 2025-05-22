@@ -1,8 +1,12 @@
 # my dots
-<div style="display: flex;">
+ <div align="center">
   <img src="https://github.com/user-attachments/assets/be662c56-4974-4241-8789-b55806f7c7a2" width="49%">
+  <img src="https://github.com/user-attachments/assets/85a2e438-fe35-40d2-aaa6-940015fccbc1" width="49%">
   <img src="https://github.com/user-attachments/assets/f0b46ca2-f81d-485b-a944-ac5136152cf3" width="49%">
+  <img src="https://github.com/user-attachments/assets/9effbad8-2e95-4481-9c13-3b1843e3dfd1" width="49%">
 </div>
+
+
 
 ## to install all the necessary packages in arch (there may be some missing) run 
 ```
@@ -22,18 +26,4 @@ if you don't use either i3 or hyprland, it will just install some basic packages
 sudo chmod +x push.sh
 ./push.sh
 ```
-this will copy the contents of 
-```
-.zshrc 
-.gitconfig 
-.gitignore_global
-.tmux.conf
-.config/nvim
-.config/alacritty
-.config/i3
-.config/i3status-rust
-.config/hypr
-.config/waybar
-.local/scripts
-```
-to your local machine
+this will copy the contents all dirs listed in [dir_list](https://github.com/otavioCosta2110/dotfiles/blob/main/dir_list) to your local machine
