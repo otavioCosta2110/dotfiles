@@ -29,6 +29,10 @@ not_charging_format = " $icon $percentage "
 empty_format = " $icon $percentage "
 format = " $icon $percentage "
 
+[[block.click]]
+button = "left"
+cmd = "exo-open https://github.com/notifications?query=is%3Aunread"
+
 # [[block]]
 # block = "net"
 # format = "   {$ssid |Wired connection} "

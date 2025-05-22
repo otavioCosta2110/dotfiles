@@ -3,17 +3,7 @@
 DOTFILES_DIR="$HOME/dotfiles"
 
 DOTFILES=(
-    .zshrc 
-    .gitconfig 
-    .gitignore_global
-    .tmux.conf
-    .config/nvim
-    .config/alacritty
-    .config/i3
-    .config/i3status-rust
-    .config/hypr
-    .config/waybar
-    .local/scripts
+  $(cat dir_list)
 )
 
 for file in "${DOTFILES[@]}"; do
