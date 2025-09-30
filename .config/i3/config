@@ -254,7 +254,7 @@ bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
 bindsym control+mod1+u exec --no-startup-id pavucontrol
 
 # pavucontrol
-# bindsym $mod+ctrl+s exec spotify
+bindsym $mod+ctrl+s exec spotify
 
 # xkill
 bindsym --release $mod+Escape exec xkill
@@ -267,7 +267,7 @@ bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
 bindsym $mod+e exec Thunar
 
 # old-game-launcher
-bindsym $mod+Ctrl+s exec "/home/otavio/dev/popup-browser/start.sh"
+# bindsym $mod+Ctrl+s exec "/home/otavio/dev/popup-browser/start.sh"
 bindsym $mod+o exec $term -e bash -c "/home/otavio/.local/scripts/run-old-game-launcher"
 bindsym $mod+Shift+f exec --no-startup-id "~/.local/scripts/favs"
 bindsym $mod+Shift+V exec $term -e "/home/otavio/.local/scripts/tmux-sessionizer.sh"

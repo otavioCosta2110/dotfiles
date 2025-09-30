@@ -30,6 +30,8 @@ else
     echo -e ~/.config/alacritty/;
     echo -e ~/.config/hypr/;
     echo -e ~/.config/i3/;
+    echo -e ~/.config/sway/;
+    echo -e ~/.local/scripts/;
     ) | fzf )
 fi
 

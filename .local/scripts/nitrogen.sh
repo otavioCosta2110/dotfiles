@@ -10,7 +10,8 @@ for i in $(seq 0 1); do
     # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/rei_blue.png --head=$i
     # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/rei_look.png --head=$i
     # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/lain_black.png --head=$i
-    nitrogen --set-zoom-fill /home/otavio/Pictures/wallpapers/2220.jpg --head=$i
+    # nitrogen --set-zoom-fill /home/otavio/Pictures/wallpapers/2220.jpg --head=$i
+    nitrogen --set-zoom-fill /home/otavio/Pictures/wallpapers/diamong2.png --head=$i
 
     # nitrogen --set-zoom-fill /home/otavio/Imagens/Wallpapers/eva-blue.png --head=$i
 done

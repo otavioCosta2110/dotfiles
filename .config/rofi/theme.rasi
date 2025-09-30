@@ -1,0 +1,164 @@
+/**
+ * Rofi Theme - Modern Dark
+ */
+
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    terminal: "alacritty";
+    drun-display-format: "{icon} {name}";
+    window-format: "{w}  {i}  {t}";
+}
+
+* {
+    /* Color scheme */
+    bg0: #2E3440;
+    bg1: #3B4252;
+    bg2: #434C5E;
+    fg0: #ECEFF4;
+    fg1: #E5E9F0;
+    fg2: #D8DEE9;
+    ac0: #88C0D0;
+    ac1: #81A1C1;
+    ac2: #5E81AC;
+    red: #BF616A;
+    orange: #D08770;
+    yellow: #EBCB8B;
+    green: #A3BE8C;
+    purple: #B48EAD;
+}
+
+/* Main settings */
+* {
+    background-color: transparent;
+    text-color: @fg0;
+}
+
+/* Window */
+window {
+    background-color: @bg0;
+    border: 2px;
+    border-color: @ac0;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* Main box */
+mainbox {
+    background-color: transparent;
+}
+
+/* Message bar */
+message {
+    background-color: @bg1;
+    border: 0px 0px 1px 0px;
+    border-color: @ac1;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 0px 0px 4px 0px;
+}
+
+/* Text input */
+textbox {
+    background-color: @bg1;
+    border: 0px;
+    border-radius: 4px;
+    padding: 12px;
+    margin: 0px 0px 8px 0px;
+    text-color: @fg0;
+}
+
+/* List of elements */
+listview {
+    background-color: transparent;
+    border: 0px;
+    border-radius: 4px;
+    padding: 4px 0px;
+    margin: 8px 0px 0px 0px;
+    lines: 8;
+    scrollbar: true;
+}
+
+/* Individual list elements */
+element {
+    background-color: transparent;
+    border: 0px;
+    border-radius: 4px;
+    padding: 8px 12px;
+    text-color: @fg1;
+}
+
+element selected {
+    background-color: @ac2;
+    text-color: @fg0;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element-icon {
+    background-color: transparent;
+    size: 24px;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+/* Scrollbar */
+scrollbar {
+    width: 4px;
+    border: 0px;
+    handle-color: @ac1;
+    handle-width: 8px;
+    padding: 0px;
+}
+
+/* Sidebar (for window mode) */
+sidebar {
+    background-color: @bg1;
+    border: 0px 1px 0px 0px;
+    border-color: @bg2;
+    border-radius: 0px;
+}
+
+button {
+    background-color: @bg1;
+    border: 0px;
+    border-radius: 4px;
+    padding: 8px;
+    text-color: @fg1;
+}
+
+button selected {
+    background-color: @ac2;
+    text-color: @fg0;
+}
+
+inputbar {
+    background-color: @bg1;
+    border: 0px;
+    border-radius: 4px;
+    padding: 12px;
+    margin: 0px 0px 8px 0px;
+    children: [prompt, textbox];
+}
+
+prompt {
+    background-color: @ac0;
+    border: 0px;
+    border-radius: 4px 0px 0px 4px;
+    padding: 12px;
+    margin: 0px 0px 0px 0px;
+    text-color: @bg0;
+}
+
+case-indicator {
+    background-color: @ac1;
+    border: 0px;
+    border-radius: 4px;
+    padding: 4px;
+    margin: 0px 4px 0px 0px;
+    text-color: @bg0;
+}

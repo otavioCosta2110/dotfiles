@@ -5,6 +5,7 @@
 .config/nvim
 .config/alacritty
 .config/i3
+.config/sway
 .config/i3status-rust
 .config/hypr
 .config/waybar
