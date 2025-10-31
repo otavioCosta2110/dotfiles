@@ -1,0 +1,47 @@
+# Default position
+layer=overlay
+anchor=top-right
+# anchor=center
+# width=300
+max-visible=5
+border-size=0
+background-color=#000000
+text-color=#d4be98
+border-radius=5
+max-history=1
+icon-location=left
+default-timeout=10000
+
+markup=1
+
+[urgency=low]
+border-color=#87CEEB
+background-color=#000000
+
+[urgency=normal]
+border-color=#8B4513
+background-color=#000000
+
+[urgency=high]
+border-color=#B22222
+background-color=#000000
+border-size=3
+
+# Rules for specific categories - CORRECT SYNTAX
+[category=centered]
+anchor=center
+# width=300
+height=1000
+default-timeout=1000
+border-radius=5
+background-color=#000000dF
+max-icon-size=200
+icon-location=top
+border-radius=20
+padding=0, 0, 30, 40
+font=monospace 15
+markup=1
+text-alignment=center
+
+[mode=do-not-disturb]
+invisible=1

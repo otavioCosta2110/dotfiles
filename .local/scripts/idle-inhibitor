@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while true
+do
+  if ! pgrep -x "sway-audio-idle" > /dev/null; then
+    echo "sway-audio-idle-inhibit not running, starting after 50 seconds..."
+    sway-audio-idle-inhibit &
+  else
+    echo "not running"
+  fi
+  sleep 250
+done

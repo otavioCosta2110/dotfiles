@@ -10,4 +10,10 @@
 .config/hypr
 .config/waybar
 .config/rofi
+.config/fuzzel
+.config/sleepwatcher-rs/
+.config/swayosd/
+.config/mako
+.config/fish
+.config/starship.toml
 .local/scripts

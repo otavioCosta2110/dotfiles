@@ -24,8 +24,10 @@ if [[ $# -eq 1 ]]; then
 else
     # If someone wants to make this extensible, i'll accept
     # PR
+    # dirs_in_notes=find ~/dev/notes -mindepth 1 -maxdepth 1 -type d;
     selected=$( (
-    find ~/httpTests ~/dev -mindepth 1 -maxdepth 1 -type d;
+    find ~/httpTests ~/dev ~/dev/notes -mindepth 1 -maxdepth 1 -type d;
+    # echo -e "$(dirs_in_notes)"
     echo -e ~/.config/nvim/;
     echo -e ~/.config/alacritty/;
     echo -e ~/.config/hypr/;

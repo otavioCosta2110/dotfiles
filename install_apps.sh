@@ -9,14 +9,15 @@ if ! command -v yay &> /dev/null; then
     rm -rf yay
 fi
 
-yay -Syyuu --noconfirm
+yay -Syu --noconfirm
 
 common_packages=(
     alacritty
-    brave-browser
+    # brave-browser
+    firefox
     brightnessctl
+    playerctl
     discord
-    flameshot
     flatpak
     fzf
     gnome-keyring
@@ -29,18 +30,31 @@ common_packages=(
     steam
     thunar
     thunar-volman
+    tumbler
     tmux
     vim
     vlc
     wine
     zathura
-    zsh-autosuggestions
-    zsh-completions
-    zsh-syntax-highlighting
+    # zsh-autosuggestions
+    # zsh-completions
+    # zsh-syntax-highlighting
+    fish
     zoxide
     zip
     unzip
     xfce4-settings
+    spotify
+    jq
+    btop
+    pavucontrol
+    mako
+    polkit-gnome
+    libnotify
+    exo
+    cargo
+    slack
+    python3
 )
 
 # i3-specific packages
@@ -51,17 +65,26 @@ i3_packages=(
     i3status
     i3lock
     xclip
+    flameshot
 )
 
 hyprland_packages=(
     waybar
-    hypridle
+    # hypridle
     hyprlock
-    slurp
-    grim
+    gammastep
+    hyprshot
+    # slurp
+    # grim
     wl-clipboard
     xdg-desktop-portal-hyprland
+    swww
+    swayosd
+    cliphist
+    dmenu
 )
+
+cargo install --git https://github.com/otavioCosta2110/wlsleephandler-rs-audio-inhibit
 
 case "$1" in
     "i3")

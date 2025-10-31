@@ -6,20 +6,44 @@
   "height": 18,
   "modules-left": [
     "sway/workspaces",
+    "hyprland/workspaces",
     "sway/mode"
   ],
   "modules-center": [
-    "clock"
+    "clock",
+    "custom/audio_idle_inhibitor"
   ],
   "modules-right": [
     "group/tray-expander",
+    // "custom/idle-inhibitor",
+    "custom/sleep_inhibit",
     "cpu",
     "memory",
     "disk",
     "network",
     "pulseaudio",
-    "battery"
+    "battery",
+    "custom/battery-mode"
   ],
+  "hyprland/workspaces": {
+    "disable-scroll-wraparound": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "active": "󱓻",
+      "default": "{name}"
+    }
+  },
   "sway/workspaces": {
     "disable-scroll-wraparound": true,
     "all-outputs": true,
@@ -39,9 +63,28 @@
       "default": "{name}"
     }
   },
+  "custom/sleep_inhibit": {
+    "exec": "~/.config/waybar/scripts/waybar_sleep_inhibit.sh",
+    "exec-on-event": false,
+    "format": " {}",
+    "signal": 1,
+    "on-click": "~/.config/waybar/scripts/waybar_sleep_inhibit.sh toggle"
+  },
+  "custom/audio_idle_inhibitor": {
+    "format": "  {icon}",
+    "exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
+    "exec-if": "which sway-audio-idle-inhibit",
+    "return-type": "json",
+    "format-icons": {
+      "output": " ",
+      "input": "",
+      "output-input": "  ",
+      "none": ""
+    }
+  },
   "cpu": {
     "interval": 5,
-    "format": "  󰍛  {usage}% ",
+    "format": "󰍛  {usage}% ",
     "on-click": "alacritty -e btop"
   },
   "memory": {
@@ -58,15 +101,12 @@
     "tooltip": true,
     "tooltip-format": "Disk: {used} / {total} ({percentage_used}%)"
   },
-  // "clock": {
-  //   "format": "{:L%A %H:%M}",
-  //   "format-alt": "{:L%d %B W%V %Y}",
-  //   "tooltip": false
-  // },
   "clock": {
-    "format": "{:%d/%m %H:%M}",
-    "format-alt": "{:%I:%M %p}",
-    "tooltip-format": "<span>{calendar}</span>",
+    "format": "{:%d/%m - %H:%M}",
+    "rotate": 0,
+    "format-alt": "{  %d·%m·%y}",
+    "tooltip-format": "<tt><big>{calendar}</big></tt>",
+    "on-click": "alacritty --title calcurse -e bash -c calcurse",
     "calendar": {
       "mode": "month",
       "format": {
@@ -95,6 +135,15 @@
     "interval": 3,
     "spacing": 1,
     "on-click": "~/.local/scripts/launch-wifi"
+  },
+  "custom/battery-mode": {
+    "exec": "~/.local/scripts/powerprofiles icon",
+    "exec-on-event": true,
+    "format": "{} ",
+    "tooltip": false,
+    "on-click": "~/.local/scripts/powerprofiles next",
+    "on-click-right": "powerprofilesctl launch $(~/.local/scripts/powerprofiles tooltip | cut -d' ' -f3)",
+    "interval": 30
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -158,15 +207,35 @@
   },
   "group/tray-expander": {
     "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "tray-group-item"
+    },
     "modules": [
+      "custom/expand-icon",
       "tray"
     ]
   },
-  "custom/screenrecording-indicator": {
-    "on-click": "~/.bin/omarchy-cmd-screenrecord",
-    "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
+  "custom/expand-icon": {
+    "format": "󱊔",
+    "tooltip": false
+  },
+  "custom/idle-inhibitor": {
+    "format": "{} ",
+    "exec": "~/.local/scripts/idle-inhibitor",
+    "on-click": "~/.local/scripts/idle-inhibitor",
+    "return-type": "json",
+    "interval": 1,
+    "tooltip": true
+  },
+  "custom/hypridle": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/hypridle-status.sh status",
+    "on-click": "~/.config/waybar/scripts/hypridle-status.sh toggle",
+    "on-click-right": "killall hypridle && ~/.config/waybar/scripts/hypridle-status.sh toggle",
     "signal": 8,
-    "return-type": "json"
+    "restart-interval": 5
   },
   "tray": {
     "icon-size": 12,

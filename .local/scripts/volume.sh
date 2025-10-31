@@ -2,9 +2,6 @@
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # Scripts for volume controls for audio and mic 
 
-iDIR="$HOME/.config/swaync/icons"
-sDIR="$HOME/.config/hypr/scripts"
-
 notification_timeout=1000
 # Static notification ID (can be any unique number)
 VOLUME_NOTIFICATION_ID=9999
@@ -13,35 +10,60 @@ MIC_NOTIFICATION_ID=9998
 # Get Volume
 get_volume() {
     volume=$(pamixer --get-volume)
-    if [[ "$volume" -eq "0" ]]; then
-        echo "Muted"
+    is_muted="$(pamixer --get-mute)"
+    if [[ "$volume" -eq "0" || "$is_muted" == "true" ]]; then
+        echo "0"
     else
-        echo "$volume %"
+        echo "$volume"
     fi
 }
 
-# Get icons
-get_icon() {
-    current=$(get_volume)
-    if [[ "$current" == "Muted" ]]; then
-        echo "$iDIR/volume-mute.png"
-    elif [[ "${current%\%}" -le 30 ]]; then
-        echo "$iDIR/volume-low.png"
-    elif [[ "${current%\%}" -le 60 ]]; then
-        echo "$iDIR/volume-mid.png"
+# Get volume icon with Nerd Fonts
+get_volume_icon() {
+    local volume=$1
+    if [[ "$volume" -eq 0 ]] || [[ "$volume" -eq 0 ]]; then
+        echo "󰖁"  # Muted icon
+    elif [[ "$volume" -le 40 ]]; then
+        echo "󰕿"  # Low volume icon
+    elif [[ "$volume" -le 75 ]]; then
+        echo "󰖀"  # Medium volume icon
     else
-        echo "$iDIR/volume-high.png"
+        echo "󰕾"  # High volume icon
     fi
 }
 
-# Notify (updated to replace existing notification)
+# Create progress bar with markup
+create_progress_bar() {
+    local percentage=$1
+    local filled=$(($percentage / 5))
+    local empty=$((20 - $filled))
+    local bar="<span foreground='#ffffff'>"
+    
+    for ((i=0; i<$filled; i++)); do
+        bar+="󰝤"
+    done
+    
+    bar+="</span><span foreground='#3f3f3f'>"
+    
+    for ((i=0; i<$empty; i++)); do
+        bar+="󰝤"
+    done
+    
+    bar+="</span>"
+    echo "$bar"
+}
+
 notify_user() {
-    if [[ "$(get_volume)" == "Muted" ]]; then
-        notify-send --replace-id=$VOLUME_NOTIFICATION_ID -t $notification_timeout -h string:x-canonical-private-synchronous:volume_notif -u low -i "$(get_icon)" "Volume:" "Muted"
-    else
-        notify-send --replace-id=$VOLUME_NOTIFICATION_ID -t $notification_timeout -h int:value:"$(get_volume | sed 's/%//')" -h string:x-canonical-private-synchronous:volume_notif -u low -i "$(get_icon)" "Volume Level:" "$(get_volume)" &&
-        "$sDIR/Sounds.sh" --volume
-    fi
+    local volume_level=$(get_volume)
+    local icon=$(get_volume_icon $volume_level)
+    local progress_bar=""
+    
+    progress_bar=$(create_progress_bar $volume_level)
+    notify-send -c centered --replace-id=$VOLUME_NOTIFICATION_ID \
+      -h string:x-canonical-private-synchronous:volume_notif \
+      -t $notification_timeout \
+      "" \
+      "<span font='107'>$icon</span>\n<b>Volume: $volume_level%</b>\n$progress_bar"
 }
 
 # Increase Volume
@@ -49,7 +71,7 @@ inc_volume() {
     if [ "$(pamixer --get-mute)" == "true" ]; then
         toggle_mute
     else
-        pamixer -i 5 --allow-boost --set-limit 150 && notify_user
+        pamixer -i 5 --allow-boost --set-limit 100 && notify_user
     fi
 }
 
@@ -64,47 +86,64 @@ dec_volume() {
 
 # Toggle Mute
 toggle_mute() {
-	if [ "$(pamixer --get-mute)" == "false" ]; then
-		pamixer -m && notify-send -t $notification_timeout --replace-id=$VOLUME_NOTIFICATION_ID -u low -i "$iDIR/volume-mute.png" "Mute"
-	elif [ "$(pamixer --get-mute)" == "true" ]; then
-		pamixer -u && notify-send -t $notification_timeout --replace-id=$VOLUME_NOTIFICATION_ID -u low -i "$(get_icon)" "Volume:" "Switched ON"
-	fi
+    if [ "$(pamixer --get-mute)" == "false" ]; then
+        pamixer -m && notify_user
+    elif [ "$(pamixer --get-mute)" == "true" ]; then
+        pamixer -u && notify_user
+    fi
 }
 
-# Toggle Mic
-toggle_mic() {
-	if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
-		pamixer --default-source -m && notify-send -t $notification_timeout --replace-id=$MIC_NOTIFICATION_ID -u low -i "$iDIR/microphone-mute.png" "Microphone:" "Switched OFF"
-	elif [ "$(pamixer --default-source --get-mute)" == "true" ]; then
-		pamixer -u --default-source u && notify-send -t $notification_timeout --replace-id=$MIC_NOTIFICATION_ID -u low -i "$iDIR/microphone.png" "Microphone:" "Switched ON"
-	fi
-}
-
-# Get Mic Icon
+# Get Mic Icon with Nerd Fonts
 get_mic_icon() {
-    current=$(pamixer --default-source --get-volume)
-    if [[ "$current" -eq "0" ]]; then
-        echo "$iDIR/microphone-mute.png"
+    if [ "$(pamixer --default-source --get-mute)" == "true" ]; then
+        echo "󰍭"  # Mic muted icon
     else
-        echo "$iDIR/microphone.png"
+        echo "󰍬"  # Mic active icon
     fi
 }
 
 # Get Microphone Volume
 get_mic_volume() {
     volume=$(pamixer --default-source --get-volume)
-    if [[ "$volume" -eq "0" ]]; then
-        echo "Muted"
+    if [[ "$volume" -eq "0" ]] || [ "$(pamixer --default-source --get-mute)" == "true" ]; then
+        echo "0"
     else
-        echo "$volume %"
+        echo "$volume"
     fi
 }
 
-# Notify for Microphone (updated to replace existing notification)
+# Notify for Microphone with markup
 notify_mic_user() {
-    volume=$(get_mic_volume)
-    icon=$(get_mic_icon)
-    notify-send --replace-id=$MIC_NOTIFICATION_ID -t $notification_timeout -h int:value:"$volume" -h "string:x-canonical-private-synchronous:volume_notif" -u low -i "$icon" "Mic Level:" "$volume"
+    local volume=$(get_mic_volume)
+    local icon=$(get_mic_icon)
+    local progress_bar=""
+    
+    if [[ "$volume" == "Muted" ]]; then
+        progress_bar=$(create_progress_bar 0)
+        notify-send --replace-id=$MIC_NOTIFICATION_ID \
+            -t $notification_timeout \
+            -h string:x-canonical-private-synchronous:volume_notif \
+            -u low \
+            "<span font='24'>$icon</span>" \
+            "<b>Microphone: Muted</b>\n$progress_bar"
+    else
+        progress_bar=$(create_progress_bar $volume)
+        notify-send --replace-id=$MIC_NOTIFICATION_ID \
+            -t $notification_timeout \
+            -h string:x-canonical-private-synchronous:volume_notif \
+            -u low \
+            "<span font='24'>$icon</span>" \
+            "<b>Microphone: $volume%</b>\n$progress_bar"
+    fi
+}
+
+# Toggle Mic
+toggle_mic() {
+    if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
+        pamixer --default-source -m && notify_mic_user
+    elif [ "$(pamixer --default-source --get-mute)" == "true" ]; then
+        pamixer --default-source -u && notify_mic_user
+    fi
 }
 
 # Increase MIC Volume
@@ -127,23 +166,23 @@ dec_mic_volume() {
 
 # Execute accordingly
 if [[ "$1" == "--get" ]]; then
-	get_volume
+    get_volume
 elif [[ "$1" == "--inc" ]]; then
-	inc_volume
+    inc_volume
 elif [[ "$1" == "--dec" ]]; then
-	dec_volume
+    dec_volume
 elif [[ "$1" == "--toggle" ]]; then
-	toggle_mute
+    toggle_mute
 elif [[ "$1" == "--toggle-mic" ]]; then
-	toggle_mic
+    toggle_mic
 elif [[ "$1" == "--get-icon" ]]; then
-	get_icon
+    get_volume_icon $(get_volume | sed 's/%//')
 elif [[ "$1" == "--get-mic-icon" ]]; then
-	get_mic_icon
+    get_mic_icon
 elif [[ "$1" == "--mic-inc" ]]; then
-	inc_mic_volume
+    inc_mic_volume
 elif [[ "$1" == "--mic-dec" ]]; then
-	dec_mic_volume
+    dec_mic_volume
 else
-	get_volume
+    get_volume
 fi

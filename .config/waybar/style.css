@@ -1,7 +1,12 @@
+@define-color foreground #d4be98;
 @import "./waybar.css";
 
+
+window#waybar {
+    background-color: @background;
+}
+
 * {
-  background-color: @background;
   color: @foreground;
 
   border: none;
@@ -28,15 +33,6 @@
   margin: 0 1.5px;
   min-width: 9px;
 }
-
-/* #workspaces button.focused { */
-/*   background-color: @foreground; */
-/* } */
-/**/
-/* #workspaces button.focused label { */
-/*   background-color: @foreground; */
-/*   color: @background; */
-/* } */
 
 #workspaces button.empty {
   opacity: 0.5;
