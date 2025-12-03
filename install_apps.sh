@@ -13,8 +13,8 @@ yay -Syu --noconfirm
 
 common_packages=(
     alacritty
-    # brave-browser
-    firefox
+    brave-browser
+    # firefox
     brightnessctl
     playerctl
     discord
