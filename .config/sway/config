@@ -107,7 +107,7 @@ bindsym $mod2+D exec discord
 
 # record screen
 bindsym $mod+ctrl+r exec /home/otavio/.local/scripts/recording.sh
-bindsym $mod+v exec pkill fuzzel || caelestia clipboard
+bindsym $mod+v exec pkill fuzzel || cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
 
 ################# reload changed configuration     
 
@@ -229,7 +229,7 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # network
 # exec nm-applet
-exec ~/.local/scripts/workday.sh
+# exec ~/.local/scripts/workday.sh
 
 # wallpaper - use swaybg instead of nitrogen
 # exec ~/.local/scripts/nitrogen.sh
@@ -285,7 +285,7 @@ bindsym $mod+e exec Thunar
 # old-game-launcher
 # bindsym $mod+Ctrl+s exec "/home/otavio/dev/popup-browser/start.sh"
 bindsym $mod+o exec $term -e bash -c "/home/otavio/.local/scripts/run-old-game-launcher"
-bindsym $mod+Shift+f exec "~/.local/scripts/favs"
+bindsym $mod+Shift+f exec "~/.local/scripts/fuzzel_fzf.sh" 
 bindsym $mod+Shift+V exec $term -e "/home/otavio/.local/scripts/tmux-sessionizer.sh"
 
 # Screenshot - use grim/slurp instead of flameshot for sway
@@ -293,6 +293,7 @@ bindsym $mod+Shift+V exec $term -e "/home/otavio/.local/scripts/tmux-sessionizer
 # bindsym $mod+Shift+s exec ~/.local/scripts/screenshot.sh area
 bindsym Print exec hyprshot -m output
 bindsym $mod+Shift+s exec hyprshot -m region -z
+bindsym $mod+Print exec lutris-gamepad-ui
 
 ################# floating or tiled rules         
 
@@ -400,6 +401,7 @@ mode "$mode_gaps_outer" {
 
 ################# bar appearance                   
 set $bg #000000
+set $none #00000000
 set $white #d4be98
 set $red #cc241d
 set $green #98971a
@@ -437,7 +439,7 @@ exec waybar
 
 # client coloring - sway uses different syntax
 client.focused $yellow $yellow $darkgray $yellow
-# client.focused_inactive $darkgray $darkgray $yellow $blue 
+# client.focused_inactive $none $none $none $none 
 # client.unfocused $darkgray $darkgray $yellow $blue 
 # client.urgent $red $red $white $red 
 
@@ -498,3 +500,4 @@ seat seat0 xcursor_theme Adwaita 24
 
 # exec_always ~/.local/scripts/idle-inhibitor
 exec /home/otavio/.cargo/bin/sleepwatcher-rs & > ~/sleep.log 
+exec /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr

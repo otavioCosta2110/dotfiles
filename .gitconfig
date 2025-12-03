@@ -1,16 +1,8 @@
 [user]
-	; email = otaviocosta23212@gmail.com
-	; name = Otávio Costa
-name = otaviocosta-ezops
-email = otavio.costa@ezops.cloud
+  email = otaviocosta23212@gmail.com
+  name = Otávio Costa
 [credential]
-	; helper = store
+	helper = store
 [push]
 	autoSetupRemote = true
-
-[includeIf "gitdir:~/dev/notes/**"]
-  path = /home/otavio/.gitconfig-ezops
-
-[includeIf "gitdir:/home/otavio/dev/notes/pidj"]
-  path = /home/otavio/.gitconfig-ezops
 

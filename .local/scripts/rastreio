@@ -6,7 +6,7 @@ import json
 def rastrear_wonca(codigo):
     """API Wonca Labs - Rastreamento"""
     url = "https://api-labs.wonca.com.br/wonca.labs.v1.LabsService/Track"
-    api_key = "5xDV-Iwjawq3BmD0v7o-CUcVcPTyMtiVuRj4G892sy4"  # Substitua pela sua chave da API
+    api_key = "wC5XLPZKcCj9wabjKvQOKvcW534bq8qbrM56oqJ4jK4"  # Substitua pela sua chave da API
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Apikey {api_key}"

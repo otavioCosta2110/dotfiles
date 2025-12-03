@@ -8,7 +8,7 @@ CURRENT_HOUR=$(date +%H)
 
 if [ "$DAY_OF_WEEK" -ge 1 ] && [ "$DAY_OF_WEEK" -le 5 ]; then
     if [ "$CURRENT_HOUR" -ge 7 ] && [ "$CURRENT_HOUR" -lt 17 ]; then
-        firefox &
+        exo-open --launch webbrowser &
         slack &
         exit 0
     else

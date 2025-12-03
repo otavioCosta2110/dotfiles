@@ -7,6 +7,7 @@ if status is-interactive
   set -gx PATH $PATH /home/otavio/.cargo/bin
   set -gx PATH $PATH /home/otavio/.bin
   set -gx PATH $PATH /usr/local/texlive/2025/bin/x86_64-linux
+  set -gx PATH $PATH /home/otavio/.opencode/bin
 
   set -gx EDITOR '/bin/nvim'
   set -gx TERM xterm-256color
@@ -18,7 +19,7 @@ if status is-interactive
   alias v=nvim
   alias ls="exa --icons --color auto -g"
   alias cd="z"
-  alias tf="terraform"
+  # alias tf="terraform"
 
   # Tmux configuration
   if tmux has-session 2>/dev/null

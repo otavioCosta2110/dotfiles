@@ -4,28 +4,28 @@ anchor=top-right
 # anchor=center
 # width=300
 max-visible=5
-border-size=0
+border-size=3
 background-color=#000000
 text-color=#d4be98
 border-radius=5
 max-history=1
 icon-location=left
 default-timeout=10000
+border-size=3
 
 markup=1
 
 [urgency=low]
-border-color=#87CEEB
+border-color=#FFFFFF
 background-color=#000000
 
 [urgency=normal]
-border-color=#8B4513
+border-color=#d4be98
 background-color=#000000
 
 [urgency=high]
 border-color=#B22222
 background-color=#000000
-border-size=3
 
 # Rules for specific categories - CORRECT SYNTAX
 [category=centered]

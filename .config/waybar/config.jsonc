@@ -191,7 +191,7 @@
     "on-click": "blueberry"
   },
   "pulseaudio": {
-    "format": "{icon}",
+    "format": "{icon}  {volume}%",
     "on-click": "alacritty --class=Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
@@ -201,7 +201,7 @@
       "default": [
         "",
         "",
-        ""
+        " "
       ]
     }
   },

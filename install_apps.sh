@@ -53,8 +53,13 @@ common_packages=(
     libnotify
     exo
     cargo
-    slack
     python3
+    fuzzel
+    exa
+    starship
+    ttf-cascadia-code-nerd
+    nwg-look
+    radeon-profile-daemon
 )
 
 # i3-specific packages
