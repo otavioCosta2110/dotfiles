@@ -13,6 +13,7 @@ yay -Syu --noconfirm
 
 common_packages=(
     alacritty
+    ripgrep
     brave-browser
     # firefox
     brightnessctl
@@ -60,6 +61,9 @@ common_packages=(
     ttf-cascadia-code-nerd
     nwg-look
     radeon-profile-daemon
+    fish
+    starship
+    tmux
 )
 
 # i3-specific packages
@@ -89,7 +93,18 @@ hyprland_packages=(
     dmenu
 )
 
-cargo install --git https://github.com/otavioCosta2110/wlsleephandler-rs-audio-inhibit
+sway_packages=(
+    autotiling
+    gammastep
+    hyprshot
+    waybar
+    wl-clipboard
+    swayosd
+    cliphist
+    dmenu
+    xdg-desktop-portal-wlr
+)
+
 
 case "$1" in
     "i3")
@@ -100,14 +115,18 @@ case "$1" in
         echo "Installing Hyprland packages..."
         packages=("${common_packages[@]}" "${hyprland_packages[@]}")
         ;;
+    "sway")
+        echo "Installing Sway packages..."
+        packages=("${common_packages[@]}" "${sway_packages[@]}")
+        ;;
     *)
         echo "Usage: $0 [i3|hyprland]"
-        exit 1
+        packages=("${common_packages[@]}")
         ;;
 esac
 
 for pkg in "${packages[@]}"; do
-    yay -S --noconfirm "$pkg" || echo "Failed to install $pkg"
+    yay -S --noconfirm --needed "$pkg" || echo "Failed to install $pkg"
 done
 
 if [ "$1" == "i3" ]; then
@@ -115,5 +134,7 @@ if [ "$1" == "i3" ]; then
 elif [ "$1" == "hyprland" ]; then
     echo "Hyprland specific configuration..."
 fi
+
+cargo install --git https://github.com/otavioCosta2110/wlsleephandler-rs-audio-inhibit
 
 echo "Installation complete for $1!"
