@@ -120,7 +120,7 @@ case "$1" in
         packages=("${common_packages[@]}" "${sway_packages[@]}")
         ;;
     *)
-        echo "Usage: $0 [i3|hyprland]"
+        echo "Usage: $0 [i3|hyprland|sway]"
         packages=("${common_packages[@]}")
         ;;
 esac
@@ -133,6 +133,8 @@ if [ "$1" == "i3" ]; then
     echo "i3 specific configuration..."
 elif [ "$1" == "hyprland" ]; then
     echo "Hyprland specific configuration..."
+elif [ "$1" == "sway" ]; then
+    echo "sway specific configuration..."
 fi
 
 cargo install --git https://github.com/otavioCosta2110/wlsleephandler-rs-audio-inhibit

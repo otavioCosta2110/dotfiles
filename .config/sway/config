@@ -291,8 +291,8 @@ bindsym $mod+Shift+V exec $term -e "/home/otavio/.local/scripts/tmux-sessionizer
 # Screenshot - use grim/slurp instead of flameshot for sway
 # bindsym Print exec ~/.local/scripts/screenshot.sh
 # bindsym $mod+Shift+s exec ~/.local/scripts/screenshot.sh area
-bindsym Print exec hyprshot -m output
-bindsym $mod+Shift+s exec hyprshot -m region -z
+bindsym Print exec hyprshot -m output -o ~/Pictures/screenshots/
+bindsym $mod+Shift+s exec hyprshot -m region -z -o ~/Pictures/screenshots/
 bindsym $mod+Print exec lutris-gamepad-ui
 
 ################# floating or tiled rules         

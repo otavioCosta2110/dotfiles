@@ -14,15 +14,21 @@
     "custom/audio_idle_inhibitor"
   ],
   "modules-right": [
-    "group/tray-expander",
     // "custom/idle-inhibitor",
     "custom/sleep_inhibit",
-    "cpu",
-    "memory",
-    "disk",
+    "custom/separator",
+    "custom/recording",
+    "custom/separator",
+    "group/tray-expander",
+    "custom/separator",
+    "group/system-resources",
+    "custom/separator",
     "network",
+    "custom/separator",
     "pulseaudio",
+    "custom/separator",
     "battery",
+    "custom/separator",
     "custom/battery-mode"
   ],
   "hyprland/workspaces": {
@@ -84,7 +90,7 @@
   },
   "cpu": {
     "interval": 5,
-    "format": "󰍛  {usage}% ",
+    "format": "󰍛  {usage}%",
     "on-click": "alacritty -e btop"
   },
   "memory": {
@@ -126,8 +132,8 @@
       "󰤨"
     ],
     "format": "{icon}",
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰀂",
+    "format-wifi": "{icon}    {essid}",
+    "format-ethernet": " ",
     "format-disconnected": "󰤮",
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
@@ -139,15 +145,15 @@
   "custom/battery-mode": {
     "exec": "~/.local/scripts/powerprofiles icon",
     "exec-on-event": true,
-    "format": "{} ",
+    "format": " {} ",
     "tooltip": false,
     "on-click": "~/.local/scripts/powerprofiles next",
     "on-click-right": "powerprofilesctl launch $(~/.local/scripts/powerprofiles tooltip | cut -d' ' -f3)",
     "interval": 30
   },
   "battery": {
-    "format": "{capacity}% {icon}",
-    "format-plugged": "{capacity}%",
+    "format": " {icon}  {capacity}%",
+    "format-plugged": " {capacity}%",
     "format-icons": {
       "charging": [
         "󰢜",
@@ -183,6 +189,18 @@
       "critical": 10
     }
   },
+  "custom/separator": {
+    "format": " | "
+  },
+  "custom/recording": {
+    "exec": "~/.config/waybar/scripts/screen_capture.sh",
+    "format": "{}",
+    "on-click": "~/.config/waybar/scripts/screen_capture.sh toggle",
+    "exec-on-event": true,
+    "signal": 10,
+    "interval": 2,
+    "return-type": "json"
+  },
   "bluetooth": {
     "format": "",
     "format-disabled": "󰂲",
@@ -191,7 +209,7 @@
     "on-click": "blueberry"
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
+    "format": "{icon}   {volume}%",
     "on-click": "alacritty --class=Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
@@ -217,7 +235,7 @@
     ]
   },
   "custom/expand-icon": {
-    "format": "󱊔",
+    "format": " 󱊔",
     "tooltip": false
   },
   "custom/idle-inhibitor": {
@@ -236,6 +254,18 @@
     "on-click-right": "killall hypridle && ~/.config/waybar/scripts/hypridle-status.sh toggle",
     "signal": 8,
     "restart-interval": 5
+  },
+  "group/system-resources": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "system-resources-item"
+    },
+    "modules": [
+      "cpu",
+      "memory",
+      "disk"
+    ]
   },
   "tray": {
     "icon-size": 12,

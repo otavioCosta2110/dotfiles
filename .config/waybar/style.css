@@ -71,13 +71,29 @@ tooltip {
   opacity: 0;
 }
 
-#custom-screenrecording-indicator {
-  min-width: 12px;
-  margin-left: 8.75px;
-  font-size: 10px;
+.idle {
+  /* padding-right: 5px; */
+  padding-right: 3px;
+  padding-left: 1px;
 }
 
 #custom-screenrecording-indicator.active {
   color: #a55555;
 }
 
+.capturing,
+.recording {
+    background-color: #ff0000;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.recording {
+  padding-right: 4px;
+  padding-left: 0px;
+}
+
+.capturing {
+  padding-right: 5px;
+  padding-left: 0px;
+}
