@@ -295,14 +295,15 @@ bindsym Print exec hyprshot -m output -o ~/Pictures/screenshots/
 # bindsym $mod+Shift+s exec hyprshot -m region -z -o ~/Pictures/screenshots/
 # bindsym $mod+Shift+s exec grim -g "$(slurp)" -t png - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
 # bindsym $mod+Shift+s exec sh -c 'grim -g "$(slurp)" -t png - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date "+%Y%m%d-%H:%M:%S").png'
-bindsym $mod+Shift+s exec sh -c 'grim -g "$(slurp)" -t png - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date "+%Y%m%d-%H:%M:%S").png
 # bindsym $mod+Print exec lutris-gamepad-ui
 
 set $satty satty -f - --initial-tool=arrow --copy-command=wl-copy --actions-on-escape="save-to-clipboard,exit" --brush-smooth-history-size=5 --disable-notifications
 
+bindsym $mod+Shift+s exec grim -g "$(slurp)" -t png - | $satty
+
 set $printscreen_mode "printscreen (r:region, f:full, w:window)"
 mode $printscreen_mode {
-    bindsym r exec sh -c "swaymsg 'mode "default"' && grim -t png -g "$(slurp -d)" - | $satty"
+    bindsym r exec swaymsg 'mode "default"' && grim -t png -g "$(slurp -d)" - | $satty
     bindsym f exec swaymsg 'mode "default"' && grim -t png - | $satty
     bindsym w exec swaymsg 'mode "default"' && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | grim -t png -g - - | $satty
 

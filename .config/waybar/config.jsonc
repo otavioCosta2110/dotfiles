@@ -9,7 +9,8 @@
         "hyprland/workspaces",
         "sway/workspaces",
         "wlr/taskbar",
-        "hyprland/window"
+        "hyprland/window",
+        "sway/mode"
     ],
     "modules-right": [
     	"mpris",
@@ -17,6 +18,7 @@
         "network",
         "pulseaudio",
         "battery",
+        "custom/battery-mode",
         "clock"
     ],
     // "height": 42,
@@ -43,7 +45,7 @@
       "󰤨"
     ],
     "format": "{icon}",
-    "format-wifi": "{icon}    {essid}",
+    "format-wifi": "   {essid}  {icon} ",
     "format-ethernet": " ",
     "format-disconnected": "󰤮",
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
@@ -91,6 +93,14 @@
             ""
         ],
         "max-length": 25
+    },
+    "custom/battery-mode": {
+      "exec": "~/.local/scripts/powerprofiles icon",
+      "exec-on-event": true,
+      "format": " {} ",
+      "tooltip": false,
+      "on-click": "~/.local/scripts/powerprofiles next",
+      "on-click-right": "powerprofilesctl launch $(~/.local/scripts/powerprofiles tooltip | cut -d' ' -f3)"
     },
     "clock": {
         "format": "{:%B %d %A %H:%M}"
