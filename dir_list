@@ -13,7 +13,7 @@
 .config/fuzzel
 .config/sleepwatcher-rs/
 .config/swayosd/
-.config/mako
+.config/swaync
 .config/fish
 .config/starship.toml
 .local/scripts
