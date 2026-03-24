@@ -3,10 +3,10 @@
 # Screen capture detection and control script for Waybar
 # Detects if screen is being captured and can toggle GPU screen recorder
 
-ICON_CAPTURED=" 󰻂 "
-ICON_FREE="  "
-ICON_RECORDING=" 󰻂 "
-ICON_SHARED=" 󱒃 "
+ICON_CAPTURED="󰻂"
+ICON_FREE=""
+ICON_RECORDING="󰻂"
+ICON_SHARED="󱒃"
 
 # State file to track recording status
 STATE_FILE="$HOME/.config/waybar/.screen_recorder_state"
@@ -154,7 +154,7 @@ toggle_recording() {
         pkill -SIGINT -f "gpu-screen-recorder"
         echo "stopped" > "$STATE_FILE"
         # Send signal to update Waybar
-        pkill -RTMIN+10 waybar
+        # pkill -RTMIN+10 waybar
     else
         # Start recording
         TIMESTAMP=$(date +%Y%m%d_%H%M%S)
@@ -167,7 +167,7 @@ toggle_recording() {
         echo "recording" > "$STATE_FILE"
         
         # Send signal to update Waybar
-        pkill -RTMIN+10 waybar
+        # pkill -RTMIN+10 waybar
         
         # Show notification (optional)
         if command -v notify-send > /dev/null 2>&1; then

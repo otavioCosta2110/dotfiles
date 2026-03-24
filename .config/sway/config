@@ -222,7 +222,7 @@ exec wl-paste --type image --watch cliphist store
 #        resume 'swaymsg "output * power on"' \
 #        timeout 1800 'systemctl suspend' \
 #        before-sleep 'swaylock -f -c 000000'
-exec swayosd-server &
+exec syshud &
 
 # Authentication dialog
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -246,7 +246,7 @@ exec gammastep -l -29.1913:-54.8656 &
 
 # exec xfsettingsd &
 # exec dunst &
-exec mako
+exec swaync
 
 ################# applications keyboard shortcuts  
 
@@ -260,7 +260,6 @@ bindsym $mod+Shift+Return exec $term -e $SHELL -c "cd ~/dev && exec $SHELL"; foc
 bindsym shift+mod1+Return exec $term; focus
 bindsym control+mod1+KP_Enter exec $term; focus
 
-# System monitor
 bindsym control+Shift+Escape exec $term -e btop;focus
 
 # settings
@@ -287,13 +286,30 @@ bindsym $mod+e exec Thunar
 bindsym $mod+o exec $term -e bash -c "/home/otavio/.local/scripts/run-old-game-launcher"
 bindsym $mod+Shift+f exec "~/.local/scripts/fuzzel_fzf.sh" 
 bindsym $mod+Shift+V exec $term -e "/home/otavio/.local/scripts/tmux-sessionizer.sh"
+bindsym $mod+ctrl+c exec $term -e "calcurse"
 
 # Screenshot - use grim/slurp instead of flameshot for sway
 # bindsym Print exec ~/.local/scripts/screenshot.sh
 # bindsym $mod+Shift+s exec ~/.local/scripts/screenshot.sh area
 bindsym Print exec hyprshot -m output -o ~/Pictures/screenshots/
-bindsym $mod+Shift+s exec hyprshot -m region -z -o ~/Pictures/screenshots/
-bindsym $mod+Print exec lutris-gamepad-ui
+# bindsym $mod+Shift+s exec hyprshot -m region -z -o ~/Pictures/screenshots/
+# bindsym $mod+Shift+s exec grim -g "$(slurp)" -t png - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+# bindsym $mod+Shift+s exec sh -c 'grim -g "$(slurp)" -t png - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date "+%Y%m%d-%H:%M:%S").png'
+bindsym $mod+Shift+s exec sh -c 'grim -g "$(slurp)" -t png - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date "+%Y%m%d-%H:%M:%S").png
+# bindsym $mod+Print exec lutris-gamepad-ui
+
+set $satty satty -f - --initial-tool=arrow --copy-command=wl-copy --actions-on-escape="save-to-clipboard,exit" --brush-smooth-history-size=5 --disable-notifications
+
+set $printscreen_mode "printscreen (r:region, f:full, w:window)"
+mode $printscreen_mode {
+    bindsym r exec sh -c "swaymsg 'mode "default"' && grim -t png -g "$(slurp -d)" - | $satty"
+    bindsym f exec swaymsg 'mode "default"' && grim -t png - | $satty
+    bindsym w exec swaymsg 'mode "default"' && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | grim -t png -g - - | $satty
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+p mode $printscreen_mode
 
 ################# floating or tiled rules         
 
@@ -321,11 +337,16 @@ for_window [window_role="setup"] floating enable
 # bindsym XF86AudioLowerVolume exec ~/.local/scripts/volume.sh --dec
 # bindsym XF86AudioMute exec ~/.local/scripts/volume.sh --toggle
 # Sink volume raise optionally with --device
-bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise
+# bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise
 # Sink volume lower optionally with --device
-bindsym XF86AudioLowerVolume exec  swayosd-client --output-volume lower
+# bindsym XF86AudioLowerVolume exec  swayosd-client --output-volume lower
 # Sink volume toggle mute
-bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+# bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+
+bindsym XF86AudioRaiseVolume exec pamixer -i 5 --allow-boost --set-limit 100
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioMute exec ~/.local/scripts/toggle_mute.sh
+
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
@@ -336,12 +357,12 @@ bindsym XF86AudioStop exec playerctl stop
 # bindsym XF86MonBrightnessUp exec ~/.local/scripts/brightness.sh --inc
 # bindsym XF86MonBrightnessDown exec ~/.local/scripts/brightness.sh --dec
 # Brightness raise
-bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
+# bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
 # Brightness lower
-bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
+# bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
 
-# bindsym XF86MonBrightnessUp exec brightnessctl s 2+
-# bindsym XF86MonBrightnessDown exec brightnessctl s 2-
+bindsym XF86MonBrightnessUp exec brightnessctl s +5%
+bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
 
 ################# border control                   
 # hide_edge_borders both
@@ -412,12 +433,12 @@ set $aqua #3C3836
 set $gray #a89984
 set $darkgray #bdbdbd
 
-exec echo "@define-color background rgba(0,0,0,0.85);" > ~/.config/waybar/waybar.css
+# exec echo "@define-color background rgba(0,0,0,0.85);" > ~/.config/waybar/waybar.css
 exec waybar
 
 # bar {
 #     # workspace_buttons yes
-# 	font pango:Noto Sans 8
+# 	font pango:Noto Sans 7
 #   # font pango:Hack Regular 8
 #     # tray_output primary - sway uses output names instead
 #     position bottom
@@ -426,15 +447,15 @@ exec waybar
 #     # status_command i3status -c ~/.config/i3/i3status.conf 
 #     status_command i3status-rs
 #
-#     colors {
-#         background $bg
-#         # statusline $yellow
-#     #     #                    border  backgr. text
-#         focused_workspace    $yellow $yellow $white
-#         inactive_workspace   $bg $bg $white
-#         # active_workspace     $darkgray $bg $yellow
-#     #     urgent_workspace     $red $red $bg
-#         }
+#     # colors {
+#     #     background $bg
+#     #     # statusline $yellow
+#     # #     #                    border  backgr. text
+#     #     focused_workspace    $yellow $yellow $white
+#     #     inactive_workspace   $bg $bg $white
+#     #     # active_workspace     $darkgray $bg $yellow
+#     # #     urgent_workspace     $red $red $bg
+#     #     }
 # }
 
 # client coloring - sway uses different syntax
@@ -499,5 +520,13 @@ output "eDP-1" {
 seat seat0 xcursor_theme Adwaita 24
 
 # exec_always ~/.local/scripts/idle-inhibitor
-exec /home/otavio/.cargo/bin/sleepwatcher-rs & > ~/sleep.log 
+# exec /home/otavio/.cargo/bin/sleepwatcher-rs & > ~/sleep.log 
 exec /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
+exec swayidle -w \
+  before-sleep 'swaylock -f -c 000000'
+
+# bindsym $mod+Ctrl+L exec swayidle -w \
+#   timeout 1 'swaylock -f -c 000000' \
+#   timeout 2 'swaymsg "output * dpms off"' \
+#   resume 'swaymsg "output * dpms on"' & sleep 6 && killall swayidle
+bindsym $mod+Ctrl+L exec ~/.local/scripts/lock_and_off.sh

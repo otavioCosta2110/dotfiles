@@ -1,0 +1,52 @@
+[[block]]
+block = "time"
+format = "%d/%m - %H:%M"
+on_click = "alacritty --title calcurse -e bash -c calcurse"
+
+[[block]]
+block = "disk"
+path = "/"
+format = "{used} / {total} ({percentage_used}%)"
+format_alt = "{percentage_used}%"
+on_click = "alacritty -e btop"
+
+[[block]]
+block = "memory"
+format = "RAM: {used:0.1f}G / {total:0.1f}G ({percentage}%)"
+format_alt = "{percentage}%"
+on_click = "alacritty -e btop"
+
+[[block]]
+block = "cpu"
+format = "{usage}%"
+on_click = "alacritty -e btop"
+
+[[block]]
+block = "battery"
+format = "{icon} {capacity}%"
+format_charging = "⚡ {capacity}%"
+format_alt = "{capacity}%"
+format_icons = ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+format_charging_icons = ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+
+[[block]]
+block = "network"
+format = "{ifname}"
+format_alt = "{ip}"
+format_disconnected = "✖"
+on_click = "~/.local/scripts/launch-wifi"
+
+[[block]]
+block = "pulse_audio"
+format = "{volume}%"
+format_muted = "🔇"
+on_click = "alacritty --class=Wiremix -e wiremix"
+
+[[block]]
+block = "bluetooth"
+format = "󰂲"
+format_connected = "󰂱"
+on_click = "blueberry"
+
+[general]
+interval = 5

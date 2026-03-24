@@ -8,6 +8,7 @@ case "${1}" in
             "balanced") powerprofilesctl set performance ;;
             "performance") powerprofilesctl set power-saver ;;
         esac
+        pkill -SIGRTMIN+4 i3status-rs
         ;;
     "icon")
         current=$(powerprofilesctl get)

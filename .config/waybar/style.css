@@ -1,99 +1,116 @@
-@define-color foreground #d4be98;
-@import "./waybar.css";
-
+* {
+	min-height: 0;
+}
 
 window#waybar {
-    background-color: @background;
+	font-family: 'Inter Regular';
+	font-size: 12px;
+	/* background: transparent; */
+	border: none;
+	color: @theme_text_color;
+  background: rgba(0,0,0,0.85);
+	/* background: alpha(@theme_base_color, 0.1); */
 }
 
-* {
-  color: @foreground;
-
-  border: none;
-  border-radius: 0;
-  min-height: 0;
-  font-family: CaskaydiaMono Nerd Font;
-  font-size: 12px;
+.modules-left,
+.modules-right {
+	padding-left: 12px;
+	padding-right: 12px;
 }
-
+/*
 .modules-left {
-  margin-left: 0px;
+	border-radius: 16px 6px 6px 6px;
 }
 
 .modules-right {
-  margin-right: 0px;
+	border-radius: 6px 16px 6px 6px;
+}
+*/
+.modules-center {
+	padding: 0 100px;
 }
 
 #workspaces {
-  margin-left: 0;
+	background: @theme_base_color;
+	border: 1px solid @unfocused_borders;
+	border-radius: 8px;
+	margin: 0.4em 0.6em;
+	padding: 0 0.6em;
 }
 
 #workspaces button {
-  padding: 0 6px;
-  margin: 0 1.5px;
-  min-width: 9px;
+	font-size: 8px;
+	margin: 0;
+	padding: 0 0.3em;
+	color: @unfocused_borders;
+	/* transition-duration: 0.5s; */
+	/* transition-property: color; */
+}
+
+#workspaces button.focused {
+	color: @theme_text_color;
 }
 
 #workspaces button.empty {
   opacity: 0.5;
 }
 
-#tray,
-#cpu,
-#battery,
-#network,
-#bluetooth,
-#pulseaudio,
-#custom-omarchy,
-#custom-screenrecording-indicator,
-#custom-update {
-  min-width: 12px;
-  margin: 0 7.5px;
+#taskbar button {
+	opacity: 0;
+	font-size: 0;
+	margin: 0.3em -20px 0.3em 0;
+	padding: 0;
 }
 
-#custom-expand-icon {
-  margin-right: 7px;
-}
-
-tooltip {
-  padding: 2px;
-}
-
-#custom-update {
-  font-size: 10px;
+#taskbar button.active {
+	font-size: 12px;
+	margin: 0.3em 0.2em 0.3em 0.2em;
+	padding: 0 0.4em;
+	opacity: 1;
 }
 
 #clock {
-  margin-left: 8.75px;
+	font-family: 'Inter Extra Bold';
+	margin: 0.3em 0.4em;
 }
 
-.hidden {
-  opacity: 0;
+#battery,
+#pulseaudio {
+	margin: 0.0em 0.8em;
 }
 
-.idle {
-  /* padding-right: 5px; */
-  padding-right: 3px;
-  padding-left: 1px;
+#battery.critical {
+	color: red;
 }
 
-#custom-screenrecording-indicator.active {
-  color: #a55555;
+#tray {
+	margin: 0.25em 0.5em;
+	padding: 0 0;
 }
 
-.capturing,
-.recording {
-    background-color: #ff0000;
-    color: #ffffff;
-    border-radius: 10px;
+#window {
+	font-size: 10px;
+	font-style: italic;
+	margin: 0 0.4em;
 }
 
-.recording {
-  padding-right: 4px;
-  padding-left: 0px;
+#custom-sysicon {
+	font-size: 14px;
+	padding: 0 0.25em;
 }
 
-.capturing {
-  padding-right: 5px;
-  padding-left: 0px;
+#mpris {
+	font-size: 10px;
+	padding: 0 0.6em;
+	border-radius: 10px;
+	margin: 0.5em 0.3em;
+	background: alpha(@theme_base_color, 0.5);
+	border: 1px solid alpha(@unfocused_borders, 0.4);
+}
+
+#mpris.paused {
+	font-size: 10px;
+	margin: 0.8em -5px;
+	background-color: transparent;
+	border: none;
 }

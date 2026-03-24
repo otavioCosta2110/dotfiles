@@ -1,0 +1,103 @@
+@define-color foreground #d4be98;
+@import "./waybar.css";
+
+
+window#waybar {
+    background-color: @background;
+}
+
+* {
+  color: @foreground;
+
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: CaskaydiaMono Nerd Font;
+  font-size: 12px;
+}
+
+.modules-left {
+  margin-left: 0px;
+}
+
+.modules-right {
+  margin-right: 0px;
+}
+
+#workspaces {
+  margin-left: 0;
+}
+
+#workspaces button {
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#tray,
+#cpu,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio,
+#custom-omarchy,
+#custom-screenrecording-indicator,
+#custom-update {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+#custom-expand-icon {
+  margin-right: 9px;
+}
+
+#network {
+  margin-left: 11px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+#custom-update {
+  font-size: 10px;
+}
+
+#clock {
+  margin-left: 8.75px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.idle {
+  /* padding-right: 5px; */
+  padding-right: 3px;
+  padding-left: 1px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: #a55555;
+}
+
+.capturing,
+.recording {
+    background-color: #ff0000;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.recording {
+  padding-right: 4px;
+  padding-left: 0px;
+}
+
+.capturing {
+  padding-right: 5px;
+  padding-left: 0px;
+}

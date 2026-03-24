@@ -1,0 +1,274 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+  "height": 18,
+  "modules-left": [
+    "sway/workspaces",
+    "hyprland/workspaces",
+    "sway/mode"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/audio_idle_inhibitor"
+  ],
+  "modules-right": [
+    // "custom/idle-inhibitor",
+    // "custom/sleep_inhibit",
+    // "custom/separator",
+    "custom/recording",
+    "custom/separator",
+    "group/tray-expander",
+    "custom/separator",
+    "group/system-resources",
+    "custom/separator",
+    "network",
+    "custom/separator",
+    "pulseaudio",
+    "custom/separator",
+    "battery",
+    "custom/separator",
+    "custom/battery-mode"
+  ],
+  "hyprland/workspaces": {
+    "disable-scroll-wraparound": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "active": "󱓻",
+      "default": "{name}"
+    }
+  },
+  "sway/workspaces": {
+    "disable-scroll-wraparound": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "focused": "󱓻",
+      "default": "{name}"
+    }
+  },
+  "custom/sleep_inhibit": {
+    "exec": "~/.config/waybar/scripts/waybar_sleep_inhibit.sh",
+    "exec-on-event": false,
+    "format": " {}",
+    "signal": 1,
+    "on-click": "~/.config/waybar/scripts/waybar_sleep_inhibit.sh toggle"
+  },
+  "custom/audio_idle_inhibitor": {
+    "format": "  {icon}",
+    "exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
+    "exec-if": "which sway-audio-idle-inhibit",
+    "return-type": "json",
+    "format-icons": {
+      "output": " ",
+      "input": "",
+      "output-input": "  ",
+      "none": ""
+    }
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛  {usage}%",
+    "on-click": "alacritty -e btop"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "    {percentage}%   ",
+    "tooltip": true,
+    "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G ({percentage}%)"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "󰋊   {percentage_used}% ",
+    "format-alt": "󰋊  {used} / {total}",
+    "path": "/",
+    "tooltip": true,
+    "tooltip-format": "Disk: {used} / {total} ({percentage_used}%)"
+  },
+  "clock": {
+    "format": "{:%d/%m - %H:%M}",
+    "rotate": 0,
+    "format-alt": "{  %d·%m·%y}",
+    "tooltip-format": "<tt><big>{calendar}</big></tt>",
+    "on-click": "alacritty --title calcurse -e bash -c calcurse",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "months": "<span color='#ff6699'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+        "weekdays": "<span color='#7CD37C'><b>{}</b></span>",
+        "today": "<span color='#ffcc66'><b>{}</b></span>"
+      }
+    }
+  },
+  "network": {
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format": "{icon}",
+    "format-wifi": "{icon}    {essid}",
+    "format-ethernet": " ",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "~/.local/scripts/launch-wifi"
+  },
+  "custom/battery-mode": {
+    "exec": "~/.local/scripts/powerprofiles icon",
+    "exec-on-event": true,
+    "format": " {} ",
+    "tooltip": false,
+    "on-click": "~/.local/scripts/powerprofiles next",
+    "on-click-right": "powerprofilesctl launch $(~/.local/scripts/powerprofiles tooltip | cut -d' ' -f3)",
+    "interval": 30
+  },
+  "battery": {
+    "format": " {icon}  {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": {
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "custom/separator": {
+    "format": " | "
+  },
+  "custom/recording": {
+    "exec": "~/.config/waybar/scripts/screen_capture.sh",
+    "format": "{}",
+    "on-click": "~/.config/waybar/scripts/screen_capture.sh toggle",
+    "exec-on-event": true,
+    "signal": 10,
+    "interval": 2,
+    "return-type": "json"
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "blueberry"
+  },
+  "pulseaudio": {
+    "format": "{icon}   {volume}%",
+    "on-click": "alacritty --class=Wiremix -e wiremix",
+    "on-click-right": "pamixer -t",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        " "
+      ]
+    }
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "tray-group-item"
+    },
+    "modules": [
+      "custom/expand-icon",
+      "tray"
+    ]
+  },
+  "custom/expand-icon": {
+    "format": " 󱊔",
+    "tooltip": false
+  },
+  "custom/idle-inhibitor": {
+    "format": "{} ",
+    "exec": "~/.local/scripts/idle-inhibitor",
+    "on-click": "~/.local/scripts/idle-inhibitor",
+    "return-type": "json",
+    "interval": 1,
+    "tooltip": true
+  },
+  "custom/hypridle": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/hypridle-status.sh status",
+    "on-click": "~/.config/waybar/scripts/hypridle-status.sh toggle",
+    "on-click-right": "killall hypridle && ~/.config/waybar/scripts/hypridle-status.sh toggle",
+    "signal": 8,
+    "restart-interval": 5
+  },
+  "group/system-resources": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "system-resources-item"
+    },
+    "modules": [
+      "cpu",
+      "memory",
+      "disk"
+    ]
+  },
+  "tray": {
+    "icon-size": 12,
+    "spacing": 12
+  }
+}

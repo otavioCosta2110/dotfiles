@@ -51,10 +51,10 @@ function SystemSuspend(event)
 end
 
 DbusHandler:PrepareSleep("LockHandler")
-DbusHandler:LockHandler("LockHandler")
+-- DbusHandler:LockHandler("LockHandler")
 -- DbusHandler:UnlockHandler("UnlockHandler")
-IdleNotifier:get_notification(300,  "ScreenOff")
-IdleNotifier:get_notification(310,  "ScreenLock")
-IdleNotifier:get_notification(3600, "SystemSuspend")
+-- IdleNotifier:get_notification(300,  "ScreenOff")
+-- IdleNotifier:get_notification(310,  "ScreenLock")
+-- IdleNotifier:get_notification(3600, "SystemSuspend")
 
 Helpers:log("Finished loading idle_config.lua")
