@@ -207,7 +207,7 @@ exec_always autotiling
 # exec indicator-sound-switcher
 
 # picom replacement for sway - sway doesn't use compositors like picom
-exec swaybg -i ~/Pictures/wallpapers/terra3.png -m fill
+# exec swaybg -i ~/Pictures/wallpapers/blue.png -m fill
 
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
@@ -507,13 +507,13 @@ input * {
 output "HDMI-A-1" {
     mode 1920x1080@99.65Hz
     pos 0 0
-    bg ~/Pictures/wallpapers/terra3.png fill
+    bg ~/Pictures/wallpapers/blue.png fill
 }
 
 output "eDP-1" {
     mode 1920x1080@60Hz
     pos 1920 0
-    bg ~/Pictures/wallpapers/terra3.png fill
+    bg ~/Pictures/wallpapers/blue.png fill
     scale 1.2
 }
 

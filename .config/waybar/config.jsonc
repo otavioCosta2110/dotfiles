@@ -1,7 +1,7 @@
 {
     "reload_style_on_change": true,
     "layer": "top",
-    "height": 18,
+    "height": 25,
     "position": "top",
     "spacing": 0,
     "modules-left": [
@@ -15,10 +15,11 @@
     "modules-right": [
     	"mpris",
         "tray",
+        "group/system-resources",
         "network",
         "pulseaudio",
         "battery",
-        "custom/battery-mode",
+        "power-profiles-daemon",
         "clock"
     ],
     // "height": 42,
@@ -36,6 +37,37 @@
         "spacing": 10,
 	"reverse-direction": true
     },
+  "group/system-resources": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "system-resources-item"
+    },
+    "modules": [
+      "cpu",
+      "memory",
+      "disk"
+    ]
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛  {usage}%",
+    "on-click": "alacritty -e btop"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "    {percentage}%   ",
+    "tooltip": true,
+    "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G ({percentage}%)"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "󰋊   {percentage_used}% ",
+    "format-alt": "󰋊  {used} / {total}",
+    "path": "/",
+    "tooltip": true,
+    "tooltip-format": "Disk: {used} / {total} ({percentage_used}%)"
+  },
   "network": {
     "format-icons": [
       "󰤯",
@@ -45,7 +77,7 @@
       "󰤨"
     ],
     "format": "{icon}",
-    "format-wifi": "   {essid}  {icon} ",
+    "format-wifi": "{essid}  {icon}",
     "format-ethernet": " ",
     "format-disconnected": "󰤮",
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
@@ -56,8 +88,8 @@
     "on-click": "~/.local/scripts/launch-wifi"
   },
     "pulseaudio": {
-        "format": "{volume}%  {icon}",
-        "format-bluetooth": "{volume}%  {icon}",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": {
             "headphone": "",
@@ -94,16 +126,9 @@
         ],
         "max-length": 25
     },
-    "custom/battery-mode": {
-      "exec": "~/.local/scripts/powerprofiles icon",
-      "exec-on-event": true,
-      "format": " {} ",
-      "tooltip": false,
-      "on-click": "~/.local/scripts/powerprofiles next",
-      "on-click-right": "powerprofilesctl launch $(~/.local/scripts/powerprofiles tooltip | cut -d' ' -f3)"
-    },
     "clock": {
-        "format": "{:%B %d %A %H:%M}"
+        "format": "{:%B %d %A %H:%M}",
+        "on-click": "alacritty --title calcurse -e bash -c calcurse"
     },
     "custom/sysicon": {
         "format": ""
@@ -115,8 +140,19 @@
             "(.*) - Visual Studio Code": "$1"
         }
     },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
     "mpris": {
     	"format": "  {title}",
-      "format-paused": " "
+      "format-paused": " ",
+      "max-length": 300
     }
 }

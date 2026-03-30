@@ -17,7 +17,7 @@ if status is-interactive
 
   alias tmux='tmux -2'
   alias v=nvim
-  alias ls="exa --icons --color auto -g"
+  alias ls="exa --icons --color auto -g --group-directories-first"
   alias cd="z"
   # alias tf="terraform"
 

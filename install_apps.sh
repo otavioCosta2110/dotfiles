@@ -31,15 +31,13 @@ common_packages=(
     steam
     thunar
     thunar-volman
+    gvfs
+    gvfs-mtp
     tumbler
     tmux
     vim
-    vlc
     wine
     zathura
-    # zsh-autosuggestions
-    # zsh-completions
-    # zsh-syntax-highlighting
     fish
     zoxide
     zip
@@ -53,9 +51,10 @@ common_packages=(
     polkit-gnome
     libnotify
     exo
-    cargo
+    # cargo
     python3
     fuzzel
+    lutris
     exa
     starship
     ttf-cascadia-code-nerd
@@ -64,6 +63,8 @@ common_packages=(
     fish
     starship
     tmux
+    dmenu
+    satty
 )
 
 # i3-specific packages
@@ -83,14 +84,16 @@ hyprland_packages=(
     hyprlock
     gammastep
     hyprshot
-    # slurp
-    # grim
+    slurp
+    hy3
+    grim
     wl-clipboard
     xdg-desktop-portal-hyprland
-    swww
-    swayosd
+    # swww
+    # swayosd
+    syshud
     cliphist
-    dmenu
+    swaybg
 )
 
 sway_packages=(
@@ -99,6 +102,7 @@ sway_packages=(
     hyprshot
     waybar
     wl-clipboard
+    syshud
     swayosd
     cliphist
     dmenu
@@ -136,7 +140,5 @@ elif [ "$1" == "hyprland" ]; then
 elif [ "$1" == "sway" ]; then
     echo "sway specific configuration..."
 fi
-
-cargo install --git https://github.com/otavioCosta2110/wlsleephandler-rs-audio-inhibit
 
 echo "Installation complete for $1!"
