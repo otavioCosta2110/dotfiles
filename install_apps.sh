@@ -65,6 +65,13 @@ common_packages=(
     tmux
     dmenu
     satty
+    ttf-nerd-fonts-symbols-common
+    ttf-nerd-fonts-symbols
+    noto-fonts
+    noto-fonts-emoji
+    ttf-cascadia-code-nerd
+    ttf-jetbrains-mono-nerd
+    inter-font
 )
 
 # i3-specific packages
