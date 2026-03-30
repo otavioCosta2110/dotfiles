@@ -13,6 +13,7 @@ yay -Syu --noconfirm
 
 common_packages=(
     alacritty
+    power-profiles-daemon
     ripgrep
     brave-browser
     # firefox
