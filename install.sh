@@ -12,8 +12,9 @@ case "$1" in
         ;;
     *)
         echo "Usage: $0 [i3|hyprland|sway]"
+	return 1
         ;;
 esac
 
-./push.sh
-./install.sh $1
+bash ./push.sh
+bash ./install.sh $1

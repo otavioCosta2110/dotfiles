@@ -1,6 +1,5 @@
 .zshrc 
 .gitconfig 
-.gitignore_global
 .tmux.conf
 .config/nvim
 .config/alacritty

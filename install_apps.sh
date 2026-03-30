@@ -9,7 +9,7 @@ if ! command -v yay &> /dev/null; then
     rm -rf yay
 fi
 
-yay -Syu --noconfirm
+yay -Syu --required --noconfirm
 
 common_packages=(
     alacritty
@@ -99,6 +99,7 @@ hyprland_packages=(
     xdg-desktop-portal-hyprland
     # swww
     # swayosd
+    swaync
     syshud
     cliphist
     swaybg
